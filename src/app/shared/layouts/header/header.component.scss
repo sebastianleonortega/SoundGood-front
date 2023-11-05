@@ -1,0 +1,51 @@
+.wrapper-header {
+  height: 80px;
+  margin-bottom: 20px;
+
+  img {
+    margin: 10px;
+    height: 70px;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #0077FF; /* Color de fondo del encabezado */
+  color: #fff; /* Color del texto en el encabezado */
+
+  .logo {
+    flex: 1;
+    text-align: left;
+  }
+
+  .options {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      img {
+        width: 40px; /* Tamaño de la imagen de perfil */
+        height: 40px;
+        border-radius: 50%; /* Forma circular */
+        margin-right: 10px; /* Espacio entre la imagen de perfil y las opciones del usuario */
+      }
+
+
+    }
+
+    .green-button {
+      background-color: #00AA55; /* Color de fondo del botón verde */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-right: 10px; /* Espacio entre el botón verde y las demás opciones */
+    }
+
+  }
+}

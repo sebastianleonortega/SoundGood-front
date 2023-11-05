@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="wrapper-home">
 
   <div class="content-carousel">
@@ -7,4 +8,37 @@
       </ng-template>
     </swiper>
   </div>
+
+
+
+  <div class="doctor">
+
+    <div class="section-title">
+      <h2 class="section-heading">Conoce a nuestros Doctores</h2>
+      <p class="section-description">
+        En esta sección, puedes explorar perfiles detallados de nuestros médicos, especialistas y profesionales de la salud disponibles para consulta. Cada perfil de doctor proporciona información relevante, como su especialidad, experiencia, horarios de disponibilidad y calificaciones.
+      </p>
+    </div>
+
+
+    <div class="content-card-doctor">
+      <div class="card-doctor" *ngFor="let doctor of doctors" (click)="OnDoctor()">
+        <img src="{{doctor.img}}" alt="Imagen del medico">
+        <div class="social">
+          <i class="fa fa-twitter color-blue"></i>
+          <i class="fa fa-instagram color-red"></i>
+          <i class="fa fa-whatsapp color-green"></i>
+          <i class="fa fa-facebook color-blue"></i>
+        </div>
+        <div class="member-info">
+          <span>Dr. {{doctor.name}} {{doctor.lastname}}</span>
+          <p>{{doctor.specialty}}</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
 </div>
