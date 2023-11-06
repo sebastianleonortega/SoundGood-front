@@ -1,1 +1,71 @@
-<p>doctor works!</p>
+<app-header></app-header>
+
+<div class="wrapper-doctor">
+
+
+    <div class="left-info-doctor">
+
+        <div class="doctor-info" *ngFor="let doctor of doctors">
+            <div class="doctor-img">
+                <img src="{{doctor.img}}" alt="Imagen del medico">
+            </div>
+            <div class="member-info">
+                <span>Dr. {{doctor.name}} {{doctor.lastname}} <i class="fa fa-check-circle"></i> </span>
+                <p>{{doctor.specialty}}</p>
+                <div class="doctor-address">
+                    <span><i class="fa fa-map-marker color-location"></i> {{doctor.address}}</span>
+                    <span><i class="fa fa-calendar color-calendar"></i> {{doctor.openingHours}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultori-doctor">
+            <span class="consultori-title"><i class="fa fa-map-marker"></i> Consultorio</span>
+            <div class="map-location-doctor">
+                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1974.3388961751089!2d-73.35582219064237!3d8.235119192932915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e677bec6ab0ce07%3A0xcf6f9dcb25b465a6!2sCentro%20Comercial%20Santa%20Maria!5e0!3m2!1ses!2sco!4v1699195990013!5m2!1ses!2sco"
+                         style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="appointment-form">
+        <h2>Solicitar cita</h2>
+        <form [formGroup]="scheduleAppointment" (ngSubmit)="sendScheduleAppointment()" >
+
+            <div class="form-group">
+                <label for="appointmentDate">Fecha de la Cita</label>
+                <input formControlName="date" type="date" id="appointmentDate" name="appointmentDate">
+            </div>
+            <div class="form-group">
+                <label for="appointmentTime">Hora de la Cita</label>
+                <select formControlName="time" id="appointmentTime" name="appointmentTime">
+                    <option value="8:00-8:30">8:00-8:30</option>
+                    <option value="8:30-9:00">8:30-9:00</option>
+                    <option value="9:00-9:30">9:00-9:30</option>
+                    <option value="9:30-10:00">9:30-10:00</option>
+                    <option value="10:00-10:30">10:00-10:30</option>
+                    <option value="10:30-11:00">10:30-11:00</option>
+                    <option value="11:00-11:30">11:00-11:30</option>
+                    <option value="11:30-12:00">11:30-12:00</option>
+                    <option value="14:00-14:30">14:00-14:30</option>
+                    <option value="14:30-15:00">14:30-15:00</option>
+                    <option value="15:00-15:30">15:00-15:30</option>
+                    <option value="15:30-16:00">15:30-16:00</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="specialty">Especialidad</label>
+                <select formControlName="specialty" id="specialty" name="specialty">
+                    <option value="medico-general">Médico General</option>
+                    <option value="otorrinonaringologo">Otorrinolaringólogo</option>
+                </select>
+            </div>
+
+            <button type="submit" >Solicitar</button>
+        </form>
+    </div>
+
+
+</div>

@@ -4,10 +4,20 @@
   <div class="content-carousel">
     <swiper [config]="config">
       <ng-template swiperSlide *ngFor="let slide of slides">
-        <img [src]="slide.image" alt="image"/>
+        <img class="img-carrousel" [src]="slide.image" alt="image" />
       </ng-template>
+      <div class="swiper-pagination"></div>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-scrollbar"></div>
+      <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-c9d22d364ea31ece"></div>
+      <button class="swiper-button-next"></button>
     </swiper>
   </div>
+
+
+
 
 
 
@@ -16,9 +26,15 @@
     <div class="section-title">
       <h2 class="section-heading">Conoce a nuestros Doctores</h2>
       <p class="section-description">
-        En esta sección, puedes explorar perfiles detallados de nuestros médicos, especialistas y profesionales de la salud disponibles para consulta. Cada perfil de doctor proporciona información relevante, como su especialidad, experiencia, horarios de disponibilidad y calificaciones.
+        En esta sección, puedes explorar perfiles detallados de nuestros médicos, especialistas y profesionales de la salud disponibles para consulta. Cada perfil de doctor proporciona información relevante, como su especialidad, experiencia y horarios de atención.
       </p>
     </div>
+
+    <div class="search-container">
+      <input type="text" placeholder="Buscar...">
+      <button type="button">Buscar</button>
+    </div>
+
 
 
     <div class="content-card-doctor">

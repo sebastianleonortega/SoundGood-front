@@ -1,6 +1,7 @@
-import {Component, Directive, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AlertService} from "../../../../core/services/alert.service";
 
 
 
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private _alert: AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -31,11 +33,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.login.valid) {
-      emai: this.login.get('email')?.valid;
-      password: this.login.get('password')?.valid;
+
+      const data: any = {
+        emai: this.login.get('email')?.value,
+        password: this.login.get('password')?.value,
+      }
 
     }
+
     this.router.navigate(['home']);
+    this._alert.success("Bienvenido");
 
   }
 

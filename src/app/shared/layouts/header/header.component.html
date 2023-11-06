@@ -3,7 +3,20 @@
     <img src="assets/images/logo.png" alt="logo de Sound Good">
   </div>
   <div class="options">
-    <button class="green-button">Prueba de audición</button>
+    <div class="menu">
+      <ul>
+        <li><a href="/home">Inicio</a></li>
+        <li><a (click)="openModalReminder()">Medicamentos</a></li>
+        <li><a (click)="openModalAppointment()">Mis Citas</a></li>
+      </ul>
+      <!-- Agrega el select para dispositivos móviles -->
+      <select (change)="onSelectChange($event)">
+        <option value="inicio">Inicio</option>
+        <option value="medicamentos">Medicamentos</option>
+        <option value="citas">Mis Citas</option>
+      </select>
+
+    </div>
     <div class="user-profile">
       <img src="assets/images/user-profile.png" alt="perfil de usuario">
     </div>

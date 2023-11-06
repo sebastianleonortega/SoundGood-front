@@ -18,6 +18,7 @@ import { HeaderComponent } from './layouts/header/header.component';
     HttpClientModule,
     SwiperModule,
 
+
   ],
   exports: [
     CommonModule,

@@ -3,9 +3,18 @@
 
   //carrusel
   .content-carousel {
+    padding: 10px;
+
+    .swiper-slide{
+      background: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size:60px ;
+    }
 
     .swiper-pagination-bullet-active {
-      background: #3E3E3E;
+      background: #0096AC;
     }
 
     .swiper-pagination-bullet {
@@ -16,7 +25,7 @@
     .swiper-button-prev, .swiper-button-next {
       width: 40px;
       height: 40px;
-      background: #3E3E3E;
+      background: #0096AC;
       border-radius: 100%;
       opacity: 0.75;
       margin: 0 16px;
@@ -30,7 +39,6 @@
       color: #FFF;
       font-size: 14px !important;
       font-weight: 600;
-      z-index: 100;
     }
 
     img {
@@ -76,6 +84,37 @@
       margin: 0 auto;
       padding: 20px;
     }
+    .search-container {
+      margin: 20px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    input[type="text"] {
+      width: 290px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #0077FF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      margin-left: 10px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0055CC;
+    }
+
 
     .section-heading {
       font-size: 28px;
@@ -147,6 +186,7 @@
         }
 
         .member-info{
+          margin-top: 10px;
 
           span{
             font-size: 16px;
@@ -177,3 +217,4 @@
 
 
 }
+

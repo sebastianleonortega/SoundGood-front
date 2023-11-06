@@ -15,23 +15,23 @@ export class HomeComponent implements OnInit {
 
 
   config: SwiperOptions = {
-    loop: false,
+    loop: true,
     slidesPerView: 1,
     spaceBetween: 32,
-    navigation: true,
+    navigation: true,  // Habilita la navegación
     pagination: { clickable: true },
     scrollbar: { draggable: true },
   };
 
   slides = [
     {
-      image: 'assets/images/img-1.png',
+      image: 'assets/images/idea2.png',
     },
     {
-      image: 'assets/images/img-2.png',
+      image: 'assets/images/idea.png',
     },
     {
-      image: 'assets/images/img-1.png',
+      image: 'assets/images/auth/login1.png',
     },
   ];
 
@@ -42,6 +42,17 @@ export class HomeComponent implements OnInit {
        lastname: 'Contreras Gutierrez',
        specialty: 'Terapeuta complementario, Médico general',
        img: 'assets/images/doc1.png',
+       openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
+       address: '',
+  experience: [
+         {
+
+           experienceName: 'Acupuntura'
+         },
+         {
+           experienceName: 'Terapia Neuronal'
+         }
+       ]
      },
      {
        id: 2,
@@ -49,6 +60,16 @@ export class HomeComponent implements OnInit {
        lastname: 'Guerrero Rincon',
        specialty: 'Otorrinolaringologo',
        img: 'assets/images/doc2.png',
+       openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
+       address: '',
+       experience: [
+         {
+           experienceName: 'Acupuntura'
+         },
+         {
+           experienceName: 'Terapia Neuronal'
+         }
+       ]
      },
      {
        id: 3,
@@ -56,6 +77,17 @@ export class HomeComponent implements OnInit {
        lastname: 'Paba Gonzalez',
        specialty: 'Médico general',
        img: 'assets/images/doc3.png',
+       address: '',
+       openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
+       experience: [
+         {
+
+           experienceName: 'Acupuntura'
+         },
+         {
+           experienceName: 'Terapia Neuronal'
+         }
+       ]
      },
      {
        id: 4,
@@ -63,6 +95,17 @@ export class HomeComponent implements OnInit {
        lastname: 'Carrascal Torrado',
        specialty: 'Médico general',
        img: 'assets/images/doc4.png',
+       address: '',
+       openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
+       experience: [
+         {
+
+           experienceName: 'Acupuntura'
+         },
+         {
+           experienceName: 'Terapia Neuronal'
+         }
+       ]
      },
      {
        id: 5,
@@ -70,13 +113,23 @@ export class HomeComponent implements OnInit {
        lastname: 'Jimenez Illera',
        specialty: 'Médico general',
        img: 'assets/images/doc5.png',
+       address: '',
+       openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
+       experience: [
+         {
+
+           experienceName: 'Acupuntura'
+         },
+         {
+           experienceName: 'Terapia Neuronal'
+         }
+       ]
      },
    ]
 
 
 
   constructor(
-
       private _router: Router,
   ) { }
 
@@ -90,5 +143,7 @@ export class HomeComponent implements OnInit {
   OnDoctor(){
     this._router.navigateByUrl('/doctor');
   }
+
+
 
 }

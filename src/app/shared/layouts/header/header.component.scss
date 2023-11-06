@@ -1,6 +1,5 @@
 .wrapper-header {
   height: 80px;
-  margin-bottom: 20px;
 
   img {
     margin: 10px;
@@ -11,8 +10,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #0077FF; /* Color de fondo del encabezado */
-  color: #fff; /* Color del texto en el encabezado */
+  background-color: #0077FF;
+  color: #fff;
 
   .logo {
     flex: 1;
@@ -20,32 +19,80 @@
   }
 
   .options {
-    flex: 1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 
-    .user-profile {
-      display: flex;
-      align-items: center;
-      img {
-        width: 40px; /* Tamaño de la imagen de perfil */
-        height: 40px;
-        border-radius: 50%; /* Forma circular */
-        margin-right: 10px; /* Espacio entre la imagen de perfil y las opciones del usuario */
+    .menu {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: inline;
+          margin-right: 20px;
+          cursor: pointer;
+
+          a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      select {
+        display: none;
+        background-color: #0077FF;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+
+        &:focus{
+          outline: none;
+        }
       }
 
-
+      &.show-select select {
+        display: block; // Muestra el select cuando la clase "show-select" está presente
+      }
     }
 
-    .green-button {
-      background-color: #00AA55; /* Color de fondo del botón verde */
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      margin-right: 10px; /* Espacio entre el botón verde y las demás opciones */
-    }
+      .user-profile {
+        display: flex;
+        align-items: center;
 
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+      }
   }
 }
+
+@media (max-width: 580px) {
+  .options {
+    .menu {
+      ul {
+        display: none;
+      }
+
+      select {
+        display: block !important;
+
+      }
+    }
+  }
+}
+
