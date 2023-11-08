@@ -1,0 +1,104 @@
+//.wrapper-profile{
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  width: 100%;
+//  height: 91%;
+//
+//  .content-profile{
+//    width: 80%;
+//    height: 80%;
+//    background-color: red;
+//  }
+//}
+
+
+.user-profile {
+  display: flex;
+  justify-content: space-between;
+
+  .user-details {
+    flex: 1;
+    padding: 20px;
+
+    .avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .profile-image {
+        position: relative;
+
+        img {
+          max-width: 200px;
+          max-height: 200px;
+          border-radius: 50%;
+        }
+
+        input {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          opacity: 0;
+        }
+      }
+    }
+
+    .user-info {
+      padding: 10px;
+
+      .form-group {
+        margin-bottom: 10px;
+
+        label {
+          display: block;
+          font-weight: bold;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 5px;
+          border: 1px solid #ccc;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        button {
+          background-color: #007bff;
+          color: white;
+          padding: 10px;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+
+        button:disabled {
+          background-color: lightgray;
+          cursor: not-allowed;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+
+  .pdf-upload {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button:disabled {
+      background-color: lightgray;
+      cursor: not-allowed;
+    }
+  }
+}
+

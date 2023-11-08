@@ -1,0 +1,59 @@
+<app-header></app-header>
+
+<!--<div class="wrapper-profile">-->
+
+<!--  <div class="content-profile">-->
+
+<!--  </div>-->
+
+<!--</div>-->
+
+
+<div class="user-profile">
+  <div class="user-details">
+    <div class="avatar">
+      <div class="profile-image">
+        <!-- Vista previa de la imagen de perfil (círculo) -->
+        <img  alt="Avatar" />
+        <!-- Botón para seleccionar y cargar una nueva imagen -->
+        <input type="file"  accept="image/*" />
+      </div>
+    </div>
+    <div class="user-info">
+      <h2>Perfil de Usuario</h2>
+      <form >
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Apellido:</label>
+          <input type="text" id="lastName"  name="lastName" required />
+        </div>
+        <div class="form-group">
+          <label for="document">Documento:</label>
+          <input type="text" id="document"  name="document" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono:</label>
+          <input type="text" id="phone"  name="phone" />
+        </div>
+        <div class="form-group">
+          <label for="typeOfHearingLoss">Tipo de Pérdida Auditiva:</label>
+          <input type="text" id="typeOfHearingLoss"  name="typeOfHearingLoss" required />
+        </div>
+        <div class="form-group">
+          <label for="previousTreatments">Tratamientos Anteriores:</label>
+          <textarea id="previousTreatments"  name="previousTreatments"></textarea>
+        </div>
+        <button type="submit" >Guardar</button>
+      </form>
+    </div>
+  </div>
+  <div class="pdf-upload">
+    <h3>Subir archivos PDF</h3>
+    <input type="file"  accept=".pdf" />
+    <button ">Subir PDF</button>
+  </div>
+</div>
+

@@ -9,7 +9,7 @@
         <li><a (click)="openModalReminder()">Medicamentos</a></li>
         <li><a (click)="openModalAppointment()">Mis Citas</a></li>
       </ul>
-      <!-- Agrega el select para dispositivos móviles -->
+      <!-- select para dispositivos móviles -->
       <select (change)="onSelectChange($event)">
         <option value="inicio">Inicio</option>
         <option value="medicamentos">Medicamentos</option>
@@ -17,7 +17,7 @@
       </select>
 
     </div>
-    <div class="user-profile">
+    <div class="user-profile" (click)="OnProfile()">
       <img src="assets/images/user-profile.png" alt="perfil de usuario">
     </div>
   </div>

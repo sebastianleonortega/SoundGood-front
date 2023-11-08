@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private route: Router,
     private _dialog: MatDialog,
+    private _router: Router,
   ) {
   }
 
@@ -51,5 +52,11 @@ export class HeaderComponent implements OnInit {
       height: '600px'
     })
   }
+
+  OnProfile(){
+    this._router.navigateByUrl('/profile');
+    console.log("sapo")
+  }
+
 
 }
