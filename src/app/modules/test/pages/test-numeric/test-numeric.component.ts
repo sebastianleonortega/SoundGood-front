@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-test-numeric',
@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestNumericComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(
+    private renderer: Renderer2
+  ) { }
 
   ngOnInit(): void {
   }
+
+  appendToInput(number: string, userInput: HTMLInputElement) {
+    userInput.value += number;
+  }
+
+  onInputChange(userInput: HTMLInputElement) {
+    let inputValue = userInput.value;
+
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+
+    userInput.value = inputValue;
+  }
+
 
 }
