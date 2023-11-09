@@ -1,23 +1,12 @@
-//.wrapper-profile{
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  width: 100%;
-//  height: 91%;
-//
-//  .content-profile{
-//    width: 80%;
-//    height: 80%;
-//    background-color: red;
-//  }
-//}
-
 
 .user-profile {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
+
 
   .user-details {
+    width: 50%;
     flex: 1;
     padding: 20px;
 
@@ -45,9 +34,15 @@
     }
 
     .user-info {
+      width: 100%;
       padding: 10px;
 
+      form{
+        display: flex;
+      }
+
       .form-group {
+        width: 40%;
         margin-bottom: 10px;
 
         label {

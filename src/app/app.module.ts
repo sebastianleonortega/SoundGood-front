@@ -11,10 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {AppointmentModule} from "./modules/appointment/appointment.module";
 import {ReminderModule} from "./modules/reminder/reminder.module";
+import { TestNumericComponent } from './modules/test/pages/test-numeric/test-numeric.component';
+import { TestLeftRightComponent } from './modules/test/pages/test-left-right/test-left-right.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TestNumericComponent,
+    TestLeftRightComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,12 +5,12 @@
   .content-carousel {
     padding: 10px;
 
-    .swiper-slide{
+    .swiper-slide {
       background: #ccc;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size:60px ;
+      font-size: 60px;
     }
 
     .swiper-pagination-bullet-active {
@@ -49,26 +49,91 @@
     }
   }
 
-  //citas
-  .container-appointment{
+  //test
+
+  .wrapper-test {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    width: 200px;
+    flex-direction: column;
+    width: 100%;
 
-    .cart-appointment{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border: 1px solid red;
+    .test-container {
+      width: 100%;
+      padding: 50px;
 
-      i{
-        font-size: 40px;
+      .test-title{
+        margin: 20px;
+        text-align: center;
+        color: #0077FF;
+        h2{
+          font-weight: bold;
+          font-size: 28px;
+
+        }
       }
+
+      .test-description{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .sound-tests{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+
+        .test-numeric{
+          width: 50%;
+          padding: 20px;
+          margin: 10px;
+          box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+        .test-left-right{
+          width: 50%;
+          padding: 20px;
+          margin: 10px;
+          box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+      }
+
+      .test-title-sound{
+        margin: 20px;
+        text-align: center;
+        color: #0077FF;
+        h2{
+          font-weight: bold;
+          font-size: 20px;
+
+        }
+      }
+
+      .test-description-proof{
+        height: 120px;
+        margin-bottom: 20px;
+      }
+
+      .instruction-test{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .test{
+          img{
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+          }
+        }
+      }
+
     }
   }
+
 
   //doctores
   .doctor {
@@ -84,6 +149,7 @@
       margin: 0 auto;
       padding: 20px;
     }
+
     .search-container {
       margin: 20px;
       width: 100%;
@@ -129,7 +195,6 @@
     }
 
 
-
     .content-card-doctor {
       display: flex;
       justify-content: center;
@@ -168,13 +233,15 @@
           left: 0;
           padding: 10px;
 
-          .color-green{
+          .color-green {
             color: green;
           }
-          .color-blue{
+
+          .color-blue {
             color: blue;
           }
-          .color-red{
+
+          .color-red {
             color: red;
           }
 
@@ -185,16 +252,16 @@
           }
         }
 
-        .member-info{
+        .member-info {
           margin-top: 10px;
 
-          span{
+          span {
             font-size: 16px;
             font-weight: 700;
             color: #333;
           }
 
-          p{
+          p {
             font-size: 12px;
             font-weight: 200;
             color: #333;

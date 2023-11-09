@@ -3,6 +3,10 @@ import SwiperCore, {A11y, Navigation, Pagination, Scrollbar, SwiperOptions} from
 import {Doctor} from "../../../auth/interface/home.interface";
 import {Router} from "@angular/router";
 
+import {MatDialog} from "@angular/material/dialog";
+import {TestNumericComponent} from "../../../test/pages/test-numeric/test-numeric.component";
+import {TestLeftRightComponent} from "../../../test/pages/test-left-right/test-left-right.component";
+
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 @Component({
@@ -131,13 +135,25 @@ export class HomeComponent implements OnInit {
 
   constructor(
       private _router: Router,
+      private _dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
 
   }
-  getAllDoctors(){
 
+  openModalTestNumeric(){
+    this._dialog.open(TestNumericComponent, {
+      width: '500px',
+      height: '600px'
+    })
+  }
+
+  openModalTestLeftRight(){
+    this._dialog.open(TestLeftRightComponent, {
+      width: '500px',
+      height: '600px'
+    })
   }
 
   OnDoctor(){
