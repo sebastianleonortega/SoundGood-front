@@ -50,7 +50,6 @@
   }
 
   //test
-
   .wrapper-test {
     display: flex;
     justify-content: center;
@@ -133,7 +132,6 @@
 
     }
   }
-
 
   //doctores
   .doctor {
@@ -285,3 +283,45 @@
 
 }
 
+@media (max-width: 1100px) {
+  .wrapper-home{
+    .wrapper-test{
+      .test-container{
+        .sound-tests{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .test-numeric{
+           width: 100%;
+          }
+          .test-left-right{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 590px) {
+  .wrapper-home{
+    .wrapper-test{
+      .test-container{
+        .sound-tests{
+
+          .test-numeric{
+            height: auto;
+            .instruction-test{
+              flex-direction: column;
+            }
+          }
+          .test-left-right{
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
