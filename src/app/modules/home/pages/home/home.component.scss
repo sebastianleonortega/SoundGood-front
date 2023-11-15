@@ -121,6 +121,11 @@
         justify-content: center;
         align-items: center;
 
+        .instruction{
+          display: flex;
+          flex-direction: column;
+        }
+
         .test{
           img{
             width: 150px;
@@ -313,12 +318,23 @@
 
           .test-numeric{
             height: auto;
+
+            .test-description-proof{
+              height: auto;
+            }
             .instruction-test{
               flex-direction: column;
             }
           }
           .test-left-right{
             height: auto;
+
+            .test-description-proof{
+              height: auto;
+            }
+            .instruction-test{
+              flex-direction: column;
+            }
           }
         }
       }
