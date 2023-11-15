@@ -1,51 +1,82 @@
 <app-header></app-header>
 
 
-<div class="user-profile">
-  <div class="user-details">
-    <div class="avatar">
-      <div class="profile-image">
-        <!-- Vista previa de la imagen de perfil (círculo) -->
-        <img  alt="Avatar" />
-        <!-- Botón para seleccionar y cargar una nueva imagen -->
-        <input type="file"  accept="image/*" />
+<div class="wrapper-profile">
+  <div class="form-profile">
+    <h1>Datos del Usuario</h1>
+    <form >
+      <div class="form-group">
+        <label for="username">Nombre</label>
+        <input formControlName="email" type="text" id="username" name="username" placeholder="Nombre de usuario" appValidateErrors>
+      </div>
+      <div class="form-group">
+        <label >Apellido</label>
+        <input formControlName="password" type="password"  name="password" placeholder="Apellido de usuario">
+      </div>
+      <div class="form-group">
+        <label >Telefono</label>
+        <input formControlName="password" type="password" name="password" placeholder="Telefono de usuario">
+      </div>
+      <div class="form-group">
+        <label >Documento</label>
+        <input formControlName="password" type="password"  name="password" placeholder="Docuemnto de usuario">
+      </div>
+      <div class="form-group">
+        <label >Email</label>
+        <input formControlName="password" type="password"  name="password" placeholder="Correo electronico de usuario">
+      </div>
+    </form>
+    <h1>Actualiza tu contraseña</h1>
+    <form >
+      <div class="form-group">
+        <label for="username">Contraseña actual</label>
+        <input formControlName="email" type="text"  name="username" placeholder="Digite su contraseña" appValidateErrors>
+      </div>
+      <div class="form-group">
+        <label >Nueva contraseña</label>
+        <input formControlName="password" type="password" name="password" placeholder="Digite la nueva contraseña">
+      </div>
+      <div class="form-group">
+        <label >Confirmar contraseña</label>
+        <input formControlName="password" type="password"  name="password" placeholder="Confirmar contraseña">
+      </div>
+
+    </form>
+  </div>
+  <div class="pdf-img-profile">
+    <div class="img-profile">
+      <div class="img-profile-show">
+      <img src="assets/images/user-profile.png" alt="imagen del usuario">
+      </div>
+      <div class="img-upload">
+<!--      <img src="assets/images/subir-profile.webp" alt="">-->
       </div>
     </div>
-    <div class="user-info">
-      <h2>Perfil de Usuario</h2>
-      <form >
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-group">
-          <label for="lastName">Apellido:</label>
-          <input type="text" id="lastName"  name="lastName" required />
-        </div>
-        <div class="form-group">
-          <label for="document">Documento:</label>
-          <input type="text" id="document"  name="document" required />
-        </div>
-        <div class="form-group">
-          <label for="phone">Teléfono:</label>
-          <input type="text" id="phone"  name="phone" />
-        </div>
-        <div class="form-group">
-          <label for="typeOfHearingLoss">Tipo de Pérdida Auditiva:</label>
-          <input type="text" id="typeOfHearingLoss"  name="typeOfHearingLoss" required />
-        </div>
-        <div class="form-group">
-          <label for="previousTreatments">Tratamientos Anteriores:</label>
-          <textarea id="previousTreatments"  name="previousTreatments"></textarea>
-        </div>
-        <button type="submit" >Guardar</button>
-      </form>
+    <div class="pdf">
+      <h1>Subir historias clinica</h1>
+      <input type="file" accept=".pdf" multiple>
+      <button >Subir PDFS</button>
+
     </div>
-  </div>
-  <div class="pdf-upload">
-    <h3>Subir archivos PDF</h3>
-    <input type="file"  accept=".pdf" />
-    <button >Subir PDF</button>
   </div>
 </div>
 
+
+<!--<div class="col-12" >-->
+<!--  <div class="form-container form-rounded">-->
+<!--    <span class="form-title"> Imagen del producto</span>-->
+<!--    <div class="form-group">-->
+<!--      <div class="form-image" >-->
+<!--        <label for="img-upload" class="form-upload-image">-->
+<!--          <a>Sube tu imagen </a>, el peso maximo es de 10MB-->
+<!--        </label>-->
+<!--        <input id="img-upload" type="file"/>-->
+<!--      </div>-->
+<!--      <div class="form-control-image" *>-->
+<!--        <img  alt="img">-->
+<!--        <span></span>-->
+<!--        <em class="icon-close" ></em>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
