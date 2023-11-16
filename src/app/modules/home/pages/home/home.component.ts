@@ -141,7 +141,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.testStart();
 
   }
 
@@ -163,45 +162,12 @@ export class HomeComponent implements OnInit {
     this._router.navigateByUrl('/doctor');
   }
 
-  testStart() {
-    this._home.startTest().subscribe({
-      next: (data) => {
-        console.log(data)
-        this.siu();
-      }
-    })
-  }
 
-  inputNumbers : boolean = true
-  siu(){
-    this._home.submitResults(this.inputNumbers).subscribe({
-      next: (data) => {
-        this._home.getAudio().subscribe((audioBlob: Blob) => {
-          // Crea una URL de objeto para el blob
-          const audioUrl = URL.createObjectURL(audioBlob);
 
-          // Crea un elemento de audio y establece la URL del objeto como su fuente
-          const audio = new Audio(audioUrl);
 
-          // Reproduce el audio
-          audio.play();
-        });
-      }
-    })
-  }
 
-  playAudio(): void {
-    this._home.getAudio().subscribe((audioBlob: Blob) => {
-      // Crea una URL de objeto para el blob
-      const audioUrl = URL.createObjectURL(audioBlob);
 
-      // Crea un elemento de audio y establece la URL del objeto como su fuente
-      const audio = new Audio(audioUrl);
 
-      // Reproduce el audio
-      audio.play();
-    });
-  }
 
 
 }

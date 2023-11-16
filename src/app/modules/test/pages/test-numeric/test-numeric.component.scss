@@ -14,6 +14,11 @@
     padding: 10px;
     margin-bottom: 20px;
 
+    form{
+      display: flex;
+      align-items: center;
+    }
+
     input {
       outline: none;
       border: none;
@@ -21,6 +26,12 @@
       padding: 5px;
       font-size: 24px;
       background-color: transparent;
+    }
+
+    img{
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
     }
   }
 

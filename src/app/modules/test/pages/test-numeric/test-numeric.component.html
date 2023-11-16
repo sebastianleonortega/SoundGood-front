@@ -1,7 +1,12 @@
+
+
 <div class="wrapper-test-numeric">
 
-  <div class="display">
-    <input type="text" id="userInput" #userInput (input)="onInputChange(userInput)">
+  <div   class="display">
+    <form [formGroup]="test">
+    <input formControlName="input_numbers" type="text" id="userInput" #userInput (input)="onInputChange(userInput)">
+      <img (click)="playAudio()" src="assets/images/reload.png" alt="">
+    </form>
   </div>
 
 
@@ -27,6 +32,6 @@
   </div>
 
   <div class="send-button">
-    <button onclick="sendInput()">Enviar</button>
+    <button (click)="sendTest()">Enviar</button>
   </div>
 </div>

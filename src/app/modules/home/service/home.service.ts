@@ -17,18 +17,12 @@ export class HomeService {
     return this.http.get(this.apiUrl+"/start");
   }
 
-  public submitResults(inputNumbers: boolean):Observable<any>{
+  public submitResults(inputNumbers: string):Observable<any>{
     return this.http.post(this.apiUrl+"/start", inputNumbers);
   }
 
-  getAudio(): Observable<Blob> {
-    const audioUrl = this.apiUrl + '/audio';
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'audio/mpeg',
-    });
-
-    return this.http.get(audioUrl, { headers, responseType: 'blob' });
+  getAudio() {
+    return this.http.get(this.apiUrl+"/audio", { responseType: 'arraybuffer' });
   }
 
 

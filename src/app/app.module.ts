@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {AppointmentModule} from "./modules/appointment/appointment.module";
 import {ReminderModule} from "./modules/reminder/reminder.module";
+import {TestModule} from "./modules/test/test.module";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {ReminderModule} from "./modules/reminder/reminder.module";
       timeOut: 2000
     }),
     MatDialogModule,
+    TestModule,
   ],
   providers: [
     {
