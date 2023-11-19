@@ -1,4 +1,6 @@
 <app-header></app-header>
+<app-carrousel></app-carrousel>
+
 <div class="wrapper-home">
 
   <div class="content-carousel">
@@ -49,7 +51,7 @@
                   <li>Se reproducirán secuencias de números.</li>
                   <li>Escucha atentamente y escribe los números que escuches.</li>
                   <li>La prueba evaluará la precisión de tus respuestas.</li>
-
+                  <li>La prueba iniciara cuando toque la imagen <img style="width: 40px; " src="assets/images/arrowleft.png" alt=""> </li>
                 </ul>
 
             </div>
@@ -76,6 +78,7 @@
                 <li>Se reproducirán sonidos desde diferentes direcciones: derecha e izquierda.</li>
                 <li>Indica desde qué dirección escuchas cada sonido.</li>
                 <li>La prueba evaluará tu capacidad para distinguir las direcciones de los sonidos.</li>
+                <li>La prueba iniciara cuando toque la imagen <img style="width: 40px; " src="assets/images/arrowleft.png" alt=""> </li>
               </ul>
             </div>
             <div class="test">
@@ -127,3 +130,11 @@
 
 
 </div>
+
+<div class="go-top-container" [class.show]="showScrollButton">
+  <div class="btn" (click)="scrollToTop()">
+    <img src="assets/images/arrow-top.png" alt="">
+  </div>
+</div>
+
+<app-footer></app-footer>

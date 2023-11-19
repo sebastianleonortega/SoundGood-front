@@ -4,12 +4,16 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {SwiperModule} from "swiper/angular";
 import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { CarrouselComponent } from './layouts/carrousel/carrousel.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    CarrouselComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,9 @@ import { HeaderComponent } from './layouts/header/header.component';
     ReactiveFormsModule,
     HttpClientModule,
     SwiperModule,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    CarrouselComponent
   ]
 })
 export class SharedModule { }

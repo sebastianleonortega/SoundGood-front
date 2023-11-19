@@ -1,0 +1,50 @@
+
+
+<div class="wrapper-test-numeric" *ngIf="idAudio<=7">
+
+  <div   class="display">
+    <form [formGroup]="testForm" (ngSubmit)="sendTest()">
+
+      <input formControlName="input_numbers" type="text" id="userInput" >
+      <img (click)="deleteLastInput()" src="assets/images/delete.png" alt="">
+    </form>
+
+  </div>
+
+
+  <div class="buttons">
+    <div class="row-number">
+      <button (click)="appendToInput('1')">1</button>
+      <button (click)="appendToInput('2')">2</button>
+      <button (click)="appendToInput('3')">3</button>
+    </div>
+    <div class="row-number">
+      <button (click)="appendToInput('4')">4</button>
+      <button (click)="appendToInput('5')">5</button>
+      <button (click)="appendToInput('6')">6</button>
+    </div>
+    <div class="row-number">
+      <button (click)="appendToInput('7')">7</button>
+      <button (click)="appendToInput('8')">8</button>
+      <button (click)="appendToInput('9')">9</button>
+    </div>
+    <div class="row-number">
+      <button (click)="appendToInput('0')">0</button>
+    </div>
+  </div>
+
+  <div class="send-button" *ngIf="idAudio<7">
+    <button  (click)="sendTest()">Siguiente</button>
+  </div>
+  <div class="send-button" *ngIf="idAudio===7">
+    <button  (click)="sendTest()">Enviar</button>
+  </div>
+</div>
+
+<div class="grafica-test-numeric" *ngIf="idAudio>7">
+  <canvas id="myChart" width="400" height="400"></canvas>
+
+
+</div>
+
+

@@ -13,17 +13,4 @@ export class HomeService {
   }
 
 
-  public startTest():Observable<any>{
-    return this.http.get(this.apiUrl+"/start");
-  }
-
-  public submitResults(inputNumbers: string):Observable<any>{
-    return this.http.post(this.apiUrl+"/start", inputNumbers);
-  }
-
-  getAudio() {
-    return this.http.get(this.apiUrl+"/audio", { responseType: 'arraybuffer' });
-  }
-
-
 }

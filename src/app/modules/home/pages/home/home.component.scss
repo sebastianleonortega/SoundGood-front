@@ -1,5 +1,6 @@
 .wrapper-home {
   font-family: Arial;
+  position: relative;
 
   //carrusel
   .content-carousel {
@@ -124,8 +125,15 @@
         .instruction{
           display: flex;
           flex-direction: column;
+
         }
 
+        span{
+          color: #0077ff;
+          font-size: 20px;
+          margin: 10px;
+
+        }
         .test{
           img{
             width: 150px;
@@ -287,6 +295,31 @@
 
 
 }
+
+.go-top-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .btn {
+    img {
+      width: 40px;
+      cursor: pointer;
+      outline: none;
+      background-color: white;
+      border-radius: 50%;
+    }
+  }
+}
+
 
 @media (max-width: 1100px) {
   .wrapper-home{

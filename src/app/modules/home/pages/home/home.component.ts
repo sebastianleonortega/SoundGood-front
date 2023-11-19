@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import SwiperCore, {A11y, Navigation, Pagination, Scrollbar, SwiperOptions} from "swiper";
 import {Doctor} from "../../../auth/interface/home.interface";
 import {Router} from "@angular/router";
 
 import {MatDialog} from "@angular/material/dialog";
-import {TestNumericComponent} from "../../../test/pages/test-numeric/test-numeric.component";
 import {TestLeftRightComponent} from "../../../test/pages/test-left-right/test-left-right.component";
 import {HomeService} from "../../service/home.service";
+import {TestNumericNewComponent} from "../../../test/pages/test-numeric-new/test-numeric-new.component";
+import {ViewportScroller} from "@angular/common";
 
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -132,20 +133,36 @@ export class HomeComponent implements OnInit {
     },
   ]
 
+  showScrollButton = false;
+
 
   constructor(
     private _router: Router,
     private _dialog: MatDialog,
     private _home: HomeService,
+    private viewportScroller: ViewportScroller
   ) {
   }
 
   ngOnInit(): void {
 
   }
+  scroll(){
+    window.scrollTo(0, 0);
+  }
+
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    // Verifica si el usuario ha scrollado lo suficiente para mostrar u ocultar el botón
+    this.showScrollButton = window.scrollY > 100;
+  }
 
   openModalTestNumeric() {
-    this._dialog.open(TestNumericComponent, {
+    this._dialog.open(TestNumericNewComponent, {
       width: '500px',
       height: '600px'
     })
@@ -154,7 +171,7 @@ export class HomeComponent implements OnInit {
   openModalTestLeftRight() {
     this._dialog.open(TestLeftRightComponent, {
       width: '500px',
-      height: '300px'
+      height: '600px'
     })
   }
 

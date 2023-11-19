@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('.//modules/profile/profile.module').then(m => m.ProfileModule),
+  },
+  {
+    path: 'grafica',
+    loadChildren: () => import('.//modules/test/test.module').then(m => m.TestModule),
   }
 ];
 

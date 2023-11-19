@@ -31,6 +31,7 @@ import {TestModule} from "./modules/test/test.module";
     }),
     MatDialogModule,
     TestModule,
+
   ],
   providers: [
     {
