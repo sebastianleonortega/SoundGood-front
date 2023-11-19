@@ -30,7 +30,6 @@ import {
 } from 'chart.js';
 import {SalesMonthlyResponse} from "../../interfaces/test-left-right.interface";
 import {Router} from "@angular/router";
-import {HomeComponent} from "../../../home/pages/home/home.component";
 import {MatDialog} from "@angular/material/dialog";
 
 
@@ -81,10 +80,12 @@ export class TestLeftRightComponent implements OnInit {
   idAudio: number = 1;
   testVariable: any;
   graph : boolean = false;
-  resultNote: number = 0;
   counterRight: number = 0;
   counterLeft: number = 0;
   currentPosition: number = 0;
+  gifUrl: string = 'assets/images/git-audio.gif';
+  isGifPlaying: boolean = false;
+
 
 
   constructor(
@@ -97,7 +98,18 @@ export class TestLeftRightComponent implements OnInit {
 
   ngOnInit(): void {
     this.playAudioLeft();
+    this.playGif();
   }
+
+  playGif() {
+    this.isGifPlaying = true;
+
+    // Detén el gif después de 5 segundos
+    setTimeout(() => {
+      this.isGifPlaying = false;
+    }, 4000);
+  }
+
 
 
   //grafica
@@ -198,11 +210,13 @@ export class TestLeftRightComponent implements OnInit {
 
       if (this.testVariable == 2) {
         this.counterRight+=2;
-        console.log("tu contador derecho es: " + this.counterRight)
+      }else{
+        this.counterRight--;
+
       }
+      this.playGif();
       this.playAudioLeft();
       this.idAudio++;
-      console.log("el sonido reproducido es el #: " + this.idAudio)
     }else {
       this.graph = true;
       this.initGraph();
@@ -213,9 +227,11 @@ export class TestLeftRightComponent implements OnInit {
     if (this.idAudio< 7){
       if (this.testVariable == 1){
         this.counterLeft +=2;
-        console.log("tu contador izquierdo es: "+ this.counterLeft)
+      }else {
+        this.counterLeft --;
 
       }
+      this.playGif();
       this.playAudioRight();
     }else{
       this.graph = true;
@@ -225,6 +241,7 @@ export class TestLeftRightComponent implements OnInit {
   }
 
   btnNone(){
+    this.playGif();
     this.btnRight();
     this.idAudio++;
 
@@ -232,9 +249,6 @@ export class TestLeftRightComponent implements OnInit {
 
   //mostrar grafica
   initGraph(){
-    this.resultNote = this.counterLeft + this.counterRight;
-    console.log("este es el numero que encesitas"+this.resultNote)
-
     const tiempoDeEspera = 2000; // 2000 milisegundos (2 segundos)
 
     setTimeout(() => {
@@ -259,7 +273,7 @@ export class TestLeftRightComponent implements OnInit {
     this.testVariable = 1;
     const audioContext = new (window.AudioContext)();
 
-    this._test.getAudioLeft(this.idAudio).subscribe((data: any) => {
+    this._test.getAudioRight(this.idAudio).subscribe((data: any) => {
       audioContext.decodeAudioData(data, (buffer) => {
         const source = audioContext.createBufferSource();
         source.buffer = buffer;
@@ -268,30 +282,10 @@ export class TestLeftRightComponent implements OnInit {
         panNode.pan.value = -1;  // Para reproducir solo en el canal izquierdo
         panNode.connect(audioContext.destination);
         source.connect(panNode);
-
-        const duration = buffer.duration; // Duración total del audio
-        const interval = 100; // Intervalo de actualización en milisegundos
-
-        this.progressPercentage = '0%'; // Reinicia la posición al iniciar un nuevo sonido
-
-        const updateProgress = () => {
-          const currentTime = audioContext.currentTime;
-          const progress = (currentTime / duration) * 100;
-          this.progressPercentage = `${progress.toFixed(2)}%`;
-
-          if (currentTime < duration) {
-            requestAnimationFrame(updateProgress);
-          }
-        };
-
-        source.onended = () => {
-          this.progressPercentage = '0%'; // Reinicia la posición al final de la reproducción
-        };
-
         source.start();
-        updateProgress();
       });
     });
+
   }
   playAudioRight() {
     this.testVariable = 2;

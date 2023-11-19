@@ -25,36 +25,20 @@
     }
   }
 
-  .audio-player {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-
-    button {
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    .progress-bar {
-      width: 300px;
-      height: 10px;
-      background-color: #ddd;
-      margin-top: 10px;
-
-      .progress {
-        height: 100%;
-        background-color: #4caf50;
-      }
+  .title-result{
+    span{
+      font-weight: bold;
+      font-size: 20px;
+      color: #0077FF;
     }
   }
-
 
   .sound-player {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 200px;
     img{
       width: 80%;
     }
