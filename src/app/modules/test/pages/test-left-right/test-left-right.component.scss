@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 10px;
   position: relative;
 
   .close-profile {
@@ -26,6 +27,7 @@
   }
 
   .title-result{
+    text-align: center;
     span{
       font-weight: bold;
       font-size: 20px;
@@ -45,6 +47,7 @@
   }
 
   .options {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,7 +67,7 @@
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.3s;
-    font-size: 18px;
+    font-size: 14px;
 
     &:hover {
       background-color: #2980b9;
@@ -97,54 +100,6 @@
   }
 
 
-
-
-
-  .test-note{
-    width: 100%;
-    margin-bottom: 20px;
-
-
-    .good-result {
-
-      padding: 10px;
-      border-radius: 8px;
-      color: white;
-      border: none;
-      outline: none;
-
-      background-color: #4CAF50; /* Green */
-    }
-    .half-result {
-      padding: 10px;
-      border: none;
-      outline: none;
-      background-color: #3498db; /* Green */
-      border-radius: 8px;
-      color: #333; /* Dark gray */
-    }
-    .bad-result {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      border: none;
-      outline: none;
-      border-radius: 8px;
-      color: white;
-      background-color: #f44336; /* Red */
-
-      .retry-button {
-        margin-top: 10px;
-        padding: 8px 16px;
-        background-color: #008CBA; /* Blue */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-    }
-  }
-
   .content-legend-btn-appointment{
     display: flex;
     width: 100%;
@@ -174,18 +129,21 @@
 
       .red {
         .color-box {
+          border-radius: 50%;
           background-color: rgba(255, 0, 0, 0.7);
         }
       }
 
       .blue {
         .color-box {
+          border-radius: 50%;
           background-color: rgba(0, 0, 255, 0.7);
         }
       }
 
       .green {
         .color-box {
+          border-radius: 50%;
           background-color: rgba(0, 255, 0, 0.7);
         }
       }

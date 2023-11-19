@@ -74,8 +74,6 @@ export class TestLeftRightComponent implements OnInit {
   @ViewChild('monthlySalesGraph') private monthlySalesGraphRef!: ElementRef;
   public monthlySalesGraph!: Chart;
 
-  @ViewChild('progress') progressBar!: ElementRef;
-  progressPercentage: string = '0%';
 
   idAudio: number = 1;
   testVariable: any;
