@@ -6,7 +6,7 @@
 
   .close-profile {
     position: absolute;
-    top: -10px;
+    top: -20px;
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -82,4 +82,25 @@
 
     }
   }
+
+  .download{
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    text-align: right;
+
+    button{
+      border: none;
+      outline: none;
+      margin-top: 10px;
+      margin-right: 6px;
+      border-radius: 6px;
+      i{
+        font-size: 12px;
+      }
+    }
+  }
+
+
+
 }
