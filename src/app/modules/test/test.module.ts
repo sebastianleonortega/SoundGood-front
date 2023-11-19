@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TestNumericNewComponent } from './pages/test-numeric-new/test-numeric-new.component';
 import {TestRoutingModule} from "./test-routing.module";
+import { TestCertificateComponent } from './pages/test-certificate/test-certificate.component';
 
 
 
@@ -12,6 +13,7 @@ import {TestRoutingModule} from "./test-routing.module";
   declarations: [
     TestNumericNewComponent,
     TestLeftRightComponent,
+    TestCertificateComponent,
   ],
   imports: [
     CommonModule,

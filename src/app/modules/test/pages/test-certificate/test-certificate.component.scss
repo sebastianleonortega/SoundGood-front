@@ -1,0 +1,85 @@
+.certificate {
+  position: relative;
+  width: 100%;
+  background-color: #f9f9f9;
+  text-align: center;
+
+  .close-profile {
+    position: absolute;
+    top: -10px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background: white;
+    z-index: 2;
+
+    em {
+      font-size: 16px;
+      cursor: pointer;
+      color: #2980b9;
+    }
+
+    em:hover {
+      color: red;
+    }
+  }
+
+  .background-certificate {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+
+
+  .certificate-inf {
+    position: relative;
+    z-index: 1; // Coloca el texto encima de la imagen
+    padding: 50px; // Añade espacio alrededor del texto
+    padding-top: 70px;
+    //background-color: rgba(255, 255, 255, 0.8);
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .signature {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 30px;
+
+      .logo{
+        width: 50%;
+        img {
+          width: 150px;
+          height: 60px;
+        }
+      }
+
+      .firma{
+        width: 40%;
+        padding: 2px;
+        border-bottom: 1px solid black;
+        margin-right: 30px;
+
+      }
+
+    }
+  }
+}

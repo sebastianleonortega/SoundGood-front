@@ -31,9 +31,10 @@ import {
   Title,
   Tooltip
 } from 'chart.js';
-import {SalesMonthlyResponse, UserResponseData} from "../../interfaces/test-left-right.interface";
+import { UserResponseData} from "../../interfaces/test-left-right.interface";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+import {TestCertificateComponent} from "../test-certificate/test-certificate.component";
 
 Chart.register(
   ArcElement,
@@ -74,12 +75,9 @@ export class TestNumericNewComponent implements OnInit {
   @ViewChild('monthlySalesGraph') private monthlySalesGraphRef!: ElementRef;
   public monthlySalesGraph!: Chart;
 
-
   public testForm: FormGroup = new FormGroup({});
-
-  idAudio: number = 1;
-
-  graphResul: number = 3;
+  idAudio: number = 7;
+  graphResul: number = 5;
 
 
   constructor(
@@ -97,7 +95,6 @@ export class TestNumericNewComponent implements OnInit {
     this.playAudio();
     this.initFormTest();
   }
-
 
 
   //grafica
@@ -177,7 +174,6 @@ export class TestNumericNewComponent implements OnInit {
     });
   }
 
-
   initGraph(){
     const tiempoDeEspera = 2000; // 2000 milisegundos (2 segundos)
 
@@ -224,7 +220,6 @@ export class TestNumericNewComponent implements OnInit {
     }
   }
 
-
   deleteLastInput(): void {
     const currentInputValue = this.testForm.get('input_numbers')?.value;
     if (currentInputValue.length > 0) {
@@ -246,6 +241,13 @@ export class TestNumericNewComponent implements OnInit {
   closeModal(){
     this.dialog.closeAll();
 
+  }
+
+  openModalTestCertificate() {
+    this.dialog.open(TestCertificateComponent, {
+      width: '700px',
+      height: '500px'
+    })
   }
 
   playAudio() {
