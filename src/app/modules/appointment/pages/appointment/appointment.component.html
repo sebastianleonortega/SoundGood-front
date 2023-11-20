@@ -5,8 +5,8 @@
   <h2>Mis Citas</h2>
     <div class="appointment-card" *ngFor="let cita of citas">
       <div class="info-appointment">
-        <span>Médico:  {{ cita.doctor }}</span>
-        <span>Especialidad:  {{ cita.specialty }}</span>
+        <span>Médico:  {{ cita.doctor.name }}</span>
+        <span>Especialidad:  {{ cita.doctor.speciality }}</span>
         <span>Fecha {{ cita.date }}</span>
         <span>Hora:  {{ cita.time }}</span>
         <button (click)="cancelAppointment()" class="btn-banger">Cancelar cita</button>

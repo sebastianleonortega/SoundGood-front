@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppointmentInterface} from "../../interfaces/appointment.interface";
 import {AlertService} from "../../../../core/services/alert.service";
 import {MatDialog} from "@angular/material/dialog";
+import {AppointmentService} from "../service/appointment.service";
 
 @Component({
   selector: 'app-appointment',
@@ -10,7 +11,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class AppointmentComponent implements OnInit {
 
-  citas: AppointmentInterface[]= [
+  citas1: AppointmentInterface[] = [
     {
       "date": "2023-12-15",
       "specialty": "Medico general",
@@ -42,16 +43,36 @@ export class AppointmentComponent implements OnInit {
       "time": "2:30 PM"
     }
   ];
-  constructor(
-    private _alert : AlertService,
-    public dialog: MatDialog,
-  ) { }
+  private idUser: number = 1;
+  citas: any;
+  private doctorCita: any;
 
-  ngOnInit(): void {
+  constructor(
+    private _alert: AlertService,
+    public dialog: MatDialog,
+    private _appoint: AppointmentService,
+  ) {
   }
 
-  cancelAppointment(){
+  ngOnInit(): void {
+    this.getAllAppointment();
+    console.log(this.citas1)
+  }
+
+  cancelAppointment() {
     this._alert.success('Cita cancelada ')
+  }
+
+  getAllAppointment() {
+    this._appoint.getAllAppointment().subscribe({
+      next: (data) => {
+        this.citas = data;
+
+        console.log(data)
+      }
+    })
+
+
   }
 
   close(): void {

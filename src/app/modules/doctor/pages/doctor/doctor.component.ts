@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Doctor} from "../../../auth/interface/home.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AlertService} from "../../../../core/services/alert.service";
+import {DoctorService} from "../service/doctor.service";
+import { LocalTime } from 'js-joda';
+
 
 @Component({
   selector: 'app-doctor',
@@ -14,7 +17,7 @@ export class DoctorComponent implements OnInit {
 
 
   constructor(
-
+    private _doctor:DoctorService,
       private _alert: AlertService,
   ) { }
 
@@ -54,17 +57,35 @@ export class DoctorComponent implements OnInit {
   }
 
   sendScheduleAppointment(){
-    if (this.scheduleAppointment.valid){
-      const data: any = {
+    if (this.scheduleAppointment.valid) {
+      const selectedTime: string = this.scheduleAppointment.get('time')?.value;
 
+      // Asegúrate de que la cadena de tiempo tenga dos dígitos para las horas y minutos
+      const [hours, minutes] = selectedTime.split(':');
+      const formattedTime: string = `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
+
+      const localTime: LocalTime = LocalTime.parse(formattedTime);
+
+      const data: any = {
         date: this.scheduleAppointment.get('date')?.value,
-        time:  this.scheduleAppointment.get('time')?.value,
         specialty: this.scheduleAppointment.get('specialty')?.value,
-      }
-      this._alert.success("Cita registrada");
-      this.scheduleAppointment.reset();
-      window.scrollTo(0, 0);
+        address: "kdx 418 - 140",
+        user: { id: 1 },
+        doctor: { id: 1 },
+        time: localTime,
+      };
+
+      console.log(data);
+
+      this._doctor.createAppointment(data).subscribe({
+        next: () => {
+          this._alert.success("Cita registrada");
+          this.scheduleAppointment.reset();
+          window.scrollTo(0, 0);
+        }
+      });
     }
+
   }
 
 }
