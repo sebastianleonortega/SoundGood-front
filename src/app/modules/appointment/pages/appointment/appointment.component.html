@@ -7,9 +7,9 @@
 
     <div  class="appointment-card"  *ngFor="let cita of citas">
       <div class="info-appointment">
-        <span>Médico:  {{ cita.doctor.name }}</span>
+        <span>Médico:  {{ cita.doctor.name }} {{cita.doctor.lastName}}</span>
         <span>Especialidad:  {{ cita.doctor.speciality }}</span>
-        <span>Fecha {{ cita.date }}</span>
+        <span>Fecha: {{ cita.date }}</span>
         <span>Hora:  {{ cita.time }}</span>
         <button (click)="cancelAppointment()" class="btn-banger">Cancelar cita</button>
       </div>
@@ -20,9 +20,7 @@
       </div>
     </div>
 
-    <div class="btn-close-hi">
-      <button (click)="close()">Cerrar</button>
-    </div>
+
 
 
   </div>

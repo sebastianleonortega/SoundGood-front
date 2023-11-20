@@ -6,7 +6,7 @@
     <h2>Mis Recordatorios</h2>
     <ul>
       <li *ngFor="let reminder of reminders">
-        <span>{{ reminder.nameReminder }}</span>
+        <span>{{ reminder.medicine }}</span>
         <span> <i class="fa fa-clock-o"></i> {{ reminder.time }}</span>
 
         <button class="btn-edit-reminder">Editar</button>
@@ -22,7 +22,7 @@
       <label for="nombreMedicamento">Medicamento</label>
       <select id="nombreMedicamento" formControlName="nameMedicine" required>
         <option value="" disabled selected>Selecciona un medicamento</option>
-        <option *ngFor="let medicamento of medicamentos" [value]="medicamento.id">
+        <option *ngFor="let medicamento of medicamentos" [value]="medicamento.nombre">
           {{ medicamento.nombre }}
         </option>
       </select>

@@ -14,4 +14,8 @@ export class AppointmentService {
   getAllAppointment() {
     return this.http.get(this.apiUrl);
   }
+
+  deleteAppointment(id: any){
+    return this.http.delete(this.apiUrl+id)
+  }
 }

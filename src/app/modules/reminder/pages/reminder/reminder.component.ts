@@ -3,6 +3,8 @@ import {AlertService} from "../../../../core/services/alert.service";
 import {MatDialog} from "@angular/material/dialog";
 
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ReminderService} from "../../service/reminder.service";
+import {LocalTime} from "js-joda";
 
 @Component({
   selector: 'app-reminder',
@@ -55,19 +57,8 @@ export class ReminderComponent implements OnInit {
 
 
 
-  reminders: ReminderInterface[] = [
-    {
-      nameReminder: 'Paracetamol',
-      dose: '1 diaria',
-      time: '12:39'
-    },{
-      nameReminder: 'acetaminofen',
-      dose: '1 diaria',
-      time: '18:00'
-    },
-  ];
+  reminders: any;
 
-  timereminder : string = this.reminders[0].time;
 
 
   showForm() {
@@ -82,13 +73,12 @@ export class ReminderComponent implements OnInit {
   constructor(
     private _alert : AlertService,
     public dialog: MatDialog,
+    public reminder: ReminderService
   ) { }
 
   ngOnInit(): void {
     this.initFormReminder();
-    setInterval(()=> {
-      this.reminderAlert();
-    }, 60000)
+    this.getAllReminder();
   }
 
   initFormReminder(): void {
@@ -99,32 +89,37 @@ export class ReminderComponent implements OnInit {
     });
   }
 
-  playNotificationSound() {
-    const audio = new Audio('assets/notificacion.mp3');
-    audio.play();
-  }
-  showNotification(title: string, message: string) {
-    if ('Notification' in window) {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          const notification = new Notification(title, { body: message });
-        }
-      });
-    }
-  }
+
 
   onSubmit() {
     if (this.reminderForm.valid) {
 
       const data: any = {
-        nameMedicine: this.reminderForm.get('nameMedicine')?.value,
+        medicine: this.reminderForm.get('nameMedicine')?.value,
         time: this.reminderForm.get('time')?.value,
+        date: "2023-11-30",
+        user: { id: 1 },
       }
+      this.reminder.createReminder(data).subscribe({
+        next: () => {
+          this.medicationList = true;
+          this.getAllReminder();
 
-      this.medicationList = true;
-      this._alert.success("Recordatorio agregado");
+          this._alert.success("Recordatorio agregado");
+
+        }
+      })
+
 
     }
+  }
+
+  getAllReminder(){
+    this.reminder.getAllReminder().subscribe({
+      next: (data) => {
+        this.reminders = data;
+      }
+    })
   }
 
 
@@ -132,22 +127,22 @@ export class ReminderComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  reminderAlert(){
-    const userSelectedTime = this.timereminder
-    const currentTime = new Date();
-    if (userSelectedTime === currentTime.toLocaleTimeString('en-US', {hour12: false})) {
-
-      this.playNotificationSound();
-      this.showNotification('Recordatorio', 'Es hora de tomar tu medicamento.');
-
-    }
-  }
 
 
 }
 
 interface ReminderInterface {
-  nameReminder: string;
-  dose: string;
-  time: string;
+  id: number,
+  medicine: string,
+  date: Date,
+  time: LocalTime,
+  user: {
+    id: number,
+    name: string,
+    lastName: string,
+    email: string,
+    password: string,
+    typeOfHearingLoss: string,
+    previousTreatments: string
+  }
 }

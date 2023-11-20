@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AppointmentInterface} from "../../interfaces/appointment.interface";
 import {AlertService} from "../../../../core/services/alert.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AppointmentService} from "../service/appointment.service";
+import {AppointmentService} from "../../service/appointment.service";
 
 @Component({
   selector: 'app-appointment',
@@ -43,10 +42,20 @@ export class AppointmentComponent implements OnInit {
     })
 
 
+
   }
 
   close(): void {
     this.dialog.closeAll();
   }
+
+  deleteAppointment(){
+    this._appoint.deleteAppointment("1").subscribe({
+      next : () =>{
+        this._alert.success("Cita cancelada correctamente")
+      }
+    })
+    }
+
 
 }
