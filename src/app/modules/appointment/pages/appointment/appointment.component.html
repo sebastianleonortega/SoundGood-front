@@ -3,7 +3,9 @@
     <em class="fa fa-close" (click)="close()"></em>
   </div>
   <h2>Mis Citas</h2>
-    <div class="appointment-card" *ngFor="let cita of citas">
+  <div class="container-appointment" *ngIf="!noDate">
+
+    <div  class="appointment-card"  *ngFor="let cita of citas">
       <div class="info-appointment">
         <span>Médico:  {{ cita.doctor.name }}</span>
         <span>Especialidad:  {{ cita.doctor.speciality }}</span>
@@ -17,7 +19,15 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
-  <div class="btn-close-hi">
-    <button (click)="close()">Cerrar</button>
+
+    <div class="btn-close-hi">
+      <button (click)="close()">Cerrar</button>
+    </div>
+
+
   </div>
+  <div class="there-is-no" *ngIf="noDate">
+    no tiene citas
+  </div>
+
 </div>

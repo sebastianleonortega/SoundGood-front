@@ -11,41 +11,10 @@ import {AppointmentService} from "../service/appointment.service";
 })
 export class AppointmentComponent implements OnInit {
 
-  citas1: AppointmentInterface[] = [
-    {
-      "date": "2023-12-15",
-      "specialty": "Medico general",
-      "doctor": "Dr. Juan Leon",
-      "time": "10:00 AM"
-    },
-    {
-      "date": "2023-12-20",
-      "specialty": "otorrinolaringologo",
-      "doctor": "Dr. Mary Smith",
-      "time": "2:30 PM"
-    },
-    {
-      "date": "2023-12-20",
-      "specialty": "otorrinolaringologo",
-      "doctor": "Dr. Mary Smith",
-      "time": "2:30 PM"
-    },
-    {
-      "date": "2023-12-20",
-      "specialty": "otorrinolaringologo",
-      "doctor": "Dr. Mary Smith",
-      "time": "2:30 PM"
-    },
-    {
-      "date": "2023-12-20",
-      "specialty": "otorrinolaringologo",
-      "doctor": "Dr. Mary Smith",
-      "time": "2:30 PM"
-    }
-  ];
   private idUser: number = 1;
   citas: any;
   private doctorCita: any;
+   noDate: boolean= false;
 
   constructor(
     private _alert: AlertService,
@@ -56,7 +25,6 @@ export class AppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllAppointment();
-    console.log(this.citas1)
   }
 
   cancelAppointment() {
@@ -67,7 +35,9 @@ export class AppointmentComponent implements OnInit {
     this._appoint.getAllAppointment().subscribe({
       next: (data) => {
         this.citas = data;
-
+        if (this.citas === ''){
+          this.noDate = true;
+        }
         console.log(data)
       }
     })

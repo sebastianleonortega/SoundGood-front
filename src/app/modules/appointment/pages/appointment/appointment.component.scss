@@ -42,7 +42,8 @@
     top: 0;
     z-index: 1;
   }
-
+  .container-appointment {
+    width: 100%;
 
     .appointment-card {
       display: flex;
@@ -55,7 +56,7 @@
       width: 400px;
       max-height: 500px;
 
-      .info-appointment{
+      .info-appointment {
         display: flex;
         flex-direction: column;
 
@@ -64,7 +65,7 @@
           margin: 5px 0;
         }
 
-        .btn-banger{
+        .btn-banger {
           margin: 0 10px;
           padding: 6px;
           background-color: #FF3333;
@@ -77,7 +78,7 @@
           text-decoration: none;
           transition: background-color 0.3s, color 0.3s;
 
-          &:hover{
+          &:hover {
             background-color: red;
           }
         }
@@ -94,30 +95,33 @@
         }
       }
     }
-  .btn-close-hi{
-    display: flex;
-    justify-content: center;
 
-    width: 100%;
+    .btn-close-hi {
+      display: flex;
+      justify-content: center;
 
-    button{
       width: 100%;
-      margin: 20px;
-      padding: 6px;
-      background-color: #FF3333;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.3s, color 0.3s;
 
-      &:hover{
-        background-color: red;
+      button {
+        width: 100%;
+        margin: 20px;
+        padding: 6px;
+        background-color: #FF3333;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+          background-color: red;
+        }
       }
     }
+
   }
 }
 
