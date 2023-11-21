@@ -49,12 +49,19 @@ export class AppointmentComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  deleteAppointment(){
-    this._appoint.deleteAppointment("1").subscribe({
-      next : () =>{
-        this._alert.success("Cita cancelada correctamente")
-      }
-    })
+  deleteAppointment(value: string){
+    const index = this.citas.indexOf(value)
+    if (index !== -1){
+      let id = this.citas[index].id;
+
+      this._appoint.deleteAppointment(id).subscribe({
+        next : () =>{
+          this.citas.splice(index, 1)
+          this._alert.success("Cita cancelada correctamente");
+        }
+      })
+    }
+
     }
 
 

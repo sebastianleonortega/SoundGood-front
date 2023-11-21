@@ -1,0 +1,64 @@
+.wrapper-header {
+  height: 60px;
+
+  img {
+    border-radius: 30px;
+    margin: 10px;
+    height: 50px;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #0077FF;
+  color: #fff;
+
+  .logo {
+
+    flex: 1;
+    text-align: left;
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .menu {
+    span{
+      font-size: 16px;
+      cursor: pointer;
+    }
+    }
+
+    .user-profile {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .options {
+    .menu {
+      ul {
+        display: none;
+      }
+
+      select {
+        display: block !important;
+
+      }
+    }
+  }
+}
+

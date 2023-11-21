@@ -20,4 +20,8 @@ export class ReminderService {
   public createReminder(data: any):Observable<any>{
     return this.http.post(this.apiUrl, data);
   }
+
+  deleteReminder(id: any){
+    return this.http.delete(this.apiUrl+"/"+id)
+  }
 }

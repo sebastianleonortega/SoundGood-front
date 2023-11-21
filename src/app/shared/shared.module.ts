@@ -6,6 +6,7 @@ import {SwiperModule} from "swiper/angular";
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { CarrouselComponent } from './layouts/carrousel/carrousel.component';
+import { HeaderMedicalComponent } from './layouts/header-medical/header-medical.component';
 
 
 
@@ -13,7 +14,8 @@ import { CarrouselComponent } from './layouts/carrousel/carrousel.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CarrouselComponent
+    CarrouselComponent,
+    HeaderMedicalComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,9 @@ import { CarrouselComponent } from './layouts/carrousel/carrousel.component';
     SwiperModule,
     HeaderComponent,
     FooterComponent,
-    CarrouselComponent
+    CarrouselComponent,
+    HeaderMedicalComponent
+
   ]
 })
 export class SharedModule { }

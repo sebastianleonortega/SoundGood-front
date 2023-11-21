@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TestNumericService} from "../../service/test-numeric.service";
 import {AlertService} from "../../../../core/services/alert.service";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { EventEmitter, Output } from '@angular/core';
+
 
 import {
   ArcElement,
@@ -70,14 +72,17 @@ Chart.register(
   templateUrl: './test-numeric-new.component.html',
   styleUrls: ['./test-numeric-new.component.scss']
 })
-export class TestNumericNewComponent implements OnInit {
 
+
+export class TestNumericNewComponent implements OnInit {
+  @Output() graphResultEvent = new EventEmitter<number>();
   @ViewChild('monthlySalesGraph') private monthlySalesGraphRef!: ElementRef;
   public monthlySalesGraph!: Chart;
 
   public testForm: FormGroup = new FormGroup({});
-  idAudio: number = 7;
+  idAudio: number = 1;
   graphResul: number = 5;
+
 
 
   constructor(
@@ -96,12 +101,20 @@ export class TestNumericNewComponent implements OnInit {
     this.initFormTest();
   }
 
+  updateGraphResult(): void {
+    const newResult: number = this.graphResul;
+    this.graphResultEvent.emit(newResult);
+  }
+
+
 
   //grafica
   getMonthlySalesData() {
     const data: UserResponseData = {
       name: 'Juan Sebastian',
-      total_sales: this.graphResul
+      total_sales: this.graphResul,
+
+
     };
 
     const monthlySalesLabels: string[] = [data.name];
@@ -216,6 +229,8 @@ export class TestNumericNewComponent implements OnInit {
       this.playAudio();
       if (this.idAudio=== 8){
         this.initGraph();
+        this.updateGraphResult();
+
       }
     }
   }
@@ -244,7 +259,10 @@ export class TestNumericNewComponent implements OnInit {
   }
 
   openModalTestCertificate() {
+    const nameTest = "Prueba numerica";
+
     this.dialog.open(TestCertificateComponent, {
+      data: nameTest,
       width: '700px',
       height: '500px'
     })

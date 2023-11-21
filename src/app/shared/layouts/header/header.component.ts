@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
 
   openModalReminder(){
     this._dialog.open(ReminderComponent, {
-      width: '400px',
+      width: '500px',
       height: '600px'
     })
   }

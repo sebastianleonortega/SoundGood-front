@@ -67,7 +67,7 @@
     </div>
     <div class="btn-appointment">
       <button *ngIf="counterRight<=4 || counterLeft<=4" (click)="scheduleAppointment()">Agendar cita</button>
-      <button  class="color-blue"><i class="fa fa-eye"></i></button>
+      <button (click)="openModalTestCertificate()"  class="color-blue"><i class="fa fa-eye"></i></button>
     </div>
   </div>
 

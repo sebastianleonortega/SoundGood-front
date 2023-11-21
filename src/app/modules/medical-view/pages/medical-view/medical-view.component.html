@@ -1,0 +1,97 @@
+<app-header-medical></app-header-medical>
+
+<div class="wrapper-medical-view">
+  <div class="content-user-appointment">
+    <!-- Sección de Pacientes -->
+    <div class="card users-medical">
+      <div class="img">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="info">
+        <span class="title-info">Pacientes</span>
+        <span>Revisa información sobre los resultados de tus pacientes en tiempo real</span>
+        <button (click)="openModalUser()">Ver tabla</button>
+      </div>
+    </div>
+
+    <!-- Sección de Citas -->
+    <div class="card appointment-medical">
+      <div class="img">
+        <i class="fa fa-calendar"></i>
+      </div>
+      <div class="info">
+        <span class="title-info">Citas</span>
+        <span>Revisa la lista de citas que tienes programada</span>
+        <button (click)="openModalAppointment()">Ver tabla</button>
+      </div>
+    </div>
+
+    <!-- Nueva Sección: Resultados de Audición -->
+    <div class="card audition-results">
+      <div class="img">
+        <i class="fa fa-headphones"></i>
+      </div>
+      <div class="info">
+        <span class="title-info">Resultados de Audición</span>
+        <span>Revisa los resultados de las pruebas de audición de tus pacientes</span>
+        <button (click)="openModalTesResul()">Ver tabla</button>
+      </div>
+    </div>
+
+    <!-- Nueva Sección: Gestión de Documentos -->
+    <div class="card document-management">
+      <div class="img">
+        <i class="fa fa-file"></i>
+      </div>
+      <div class="info">
+        <span class="title-info">Gestión de Documentos</span>
+        <span>Gestiona los documentos médicos de tus pacientes</span>
+        <button (click)="openModalDocument()">Ver documentos</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="table-result">
+    <table>
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Tipo de Pérdida de Audición</th>
+        <th>Tratamientos Previos</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let patient of patientsData">
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.lastName }}</td>
+        <td>{{ patient.email }}</td>
+        <td>{{ patient.typeOfHearingLoss }}</td>
+        <td>{{ patient.previousTreatments }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Nombre de Usuario</th>
+        <th>Correo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let appointment of appointments">
+        <td>{{ appointment.date }}</td>
+        <td>{{ appointment.time }}</td>
+        <td>{{ appointment.user.name }} {{ appointment.user.lastName }}</td>
+        <td>{{ appointment.user.email }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

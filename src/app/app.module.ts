@@ -12,6 +12,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {AppointmentModule} from "./modules/appointment/appointment.module";
 import {ReminderModule} from "./modules/reminder/reminder.module";
 import {TestModule} from "./modules/test/test.module";
+import {MedicalViewModule} from "./modules/medical-view/medical-view.module";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {TestModule} from "./modules/test/test.module";
     }),
     MatDialogModule,
     TestModule,
+    MedicalViewModule
 
   ],
   providers: [

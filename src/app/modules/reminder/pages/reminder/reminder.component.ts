@@ -73,7 +73,8 @@ export class ReminderComponent implements OnInit {
   constructor(
     private _alert : AlertService,
     public dialog: MatDialog,
-    public reminder: ReminderService
+    public reminder: ReminderService,
+
   ) { }
 
   ngOnInit(): void {
@@ -125,6 +126,21 @@ export class ReminderComponent implements OnInit {
 
   close(): void {
     this.dialog.closeAll();
+  }
+
+  deleteReminder(value: string){
+    const index = this.reminders.indexOf(value)
+    if (index !== -1){
+      let id = this.reminders[index].id;
+
+      this.reminder.deleteReminder(id).subscribe({
+        next : () =>{
+          this.reminders.splice(index, 1)
+          this._alert.success("Recordatorio eliminado correctamente")
+        }
+      })
+    }
+
   }
 
 

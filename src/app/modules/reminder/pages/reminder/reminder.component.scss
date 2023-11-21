@@ -1,5 +1,5 @@
 .reminder-container {
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -21,7 +21,7 @@
   em {
     font-size: 20px;
     cursor: pointer;
-    color: gray;
+    color: #0077ff;
   }
 
   em:hover {
@@ -38,11 +38,12 @@
   justify-content: space-between;
 
   h2 {
+    color: #0077ff;
     font-size: 24px;
   }
 
   ul {
-    width: 300px;
+    width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -58,23 +59,55 @@
 
       button {
         border: none;
+        outline: none;
       }
 
       .btn-edit-reminder {
         background-color: #0077FF;
         color: #fff;
         border: none;
+        outline: none;
         border-radius: 5px;
         padding: 6px 10px;
         cursor: pointer;
         font-size: 14px;
+
 
         &:hover {
           background-color: #0055CC;
           outline: none;
         }
       }
+      .btn-delete-reminder{
+        background-color: firebrick;
+        color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding: 6px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-left: 6px;
+      }
     }
+  }
+
+  .pad{
+    margin-bottom: 20px;
+  }
+
+  .name-reminder{
+    width: 50%;
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .time-reminder{
+    width: 30%;
+  }
+
+  .btn-edit-reminder{
+    width: 20%;
   }
 
   button {
@@ -104,6 +137,7 @@
   margin-top: 100px;
 
   h2 {
+    color: #0077ff;
     font-size: 24px;
   }
   form{
@@ -163,9 +197,10 @@
     }
 
     .button-container {
+      width: 100%;
       margin-top: 20px;
-      width: 90%;
       display: flex;
+      padding: 20px;
       justify-content: center;
       align-items: center;
       gap: 4px;
@@ -175,16 +210,8 @@
         width: 20%;
         text-align: center;
 
-        .btn-estandar {
-          background-color: #0077FF;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          padding: 10px 20px;
-          cursor: pointer;
-          font-size: 16px;
-          width: 80%; /* Ajusta el ancho del botón si es necesario */
-        }
+
+
       }
 
       .btn-save-reminder {
@@ -192,11 +219,17 @@
         text-align: center;
 
 
+        button{
+          width: 80%;
+        }
+
+
       }
     }
 
   }
 }
+
 .btn-estandar {
   background-color: #0077FF;
   color: #fff;
@@ -205,9 +238,4 @@
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
-  width: 80%; /* Ajusta el ancho del botón si es necesario */
-}
-
-::ng-deep .mat-dialog-container {
-  padding: 0 !important;
 }

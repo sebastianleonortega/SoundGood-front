@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild , ElementRef} from '@angular/core';
-import {TestNumericService} from "../../service/test-numeric.service";
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   ArcElement,
   BarController,
@@ -28,11 +27,8 @@ import {
   Title,
   Tooltip
 } from 'chart.js';
-import {SalesMonthlyResponse} from "../../interfaces/test-left-right.interface";
-import {Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
-import {TestCertificateComponent} from "../test-certificate/test-certificate.component";
-
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import {SalesMonthlyResponse, UserResponseData} from "../../../test/interfaces/test-left-right.interface";
 
 
 Chart.register(
@@ -62,56 +58,43 @@ Chart.register(
   SubTitle,
   ChartDataLabels
 );
-
-
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
-  selector: 'app-test-left-right',
-  templateUrl: './test-left-right.component.html',
-  styleUrls: ['./test-left-right.component.scss']
+  selector: 'app-graph-user',
+  templateUrl: './graph-user.component.html',
+  styleUrls: ['./graph-user.component.scss']
 })
-export class TestLeftRightComponent implements OnInit {
+
+
+export class GraphUserComponent implements OnInit {
 
   @ViewChild('monthlySalesGraph') private monthlySalesGraphRef!: ElementRef;
   public monthlySalesGraph!: Chart;
 
 
-  idAudio: number = 1;
-  testVariable: any;
-  graph : boolean = false;
+
+  @ViewChild('monthlySalesGraph1') private monthlySalesGraphRef1!: ElementRef;
+  public monthlySalesGraph1!: Chart;
+
+
+
   counterRight: number = 0;
   counterLeft: number = 0;
-  currentPosition: number = 0;
-  gifUrl: string = 'assets/images/git-audio.gif';
-  isGifPlaying: boolean = false;
 
 
-
-  constructor(
-    private _test: TestNumericService,
-    private _router: Router,
-    private dialog: MatDialog,
-
-
-  ) { }
+  graphResul: number = 5;
+  constructor() { }
 
   ngOnInit(): void {
-    this.playAudioLeft();
-    this.playGif();
-  }
-
-  playGif() {
-    this.isGifPlaying = true;
-
-    // Detén el gif después de 5 segundos
-    setTimeout(() => {
-      this.isGifPlaying = false;
-    }, 4000);
+    this.initGraph();
+    this.initGraph1();
   }
 
 
-
-  //grafica
+  //grafic
   getMonthlySalesData() {
     const data: SalesMonthlyResponse = [
       {
@@ -203,115 +186,99 @@ export class TestLeftRightComponent implements OnInit {
     });
   }
 
-  //Botones de pasar audios
-  btnRight(){
-    if (this.idAudio< 7) {
-
-      if (this.testVariable == 2) {
-        this.counterRight+=2;
-      }else{
-        this.counterRight--;
-
-      }
-      this.playGif();
-      this.playAudioLeft();
-      this.idAudio++;
-    }else {
-      this.graph = true;
-      this.initGraph();
-    }
-  }
-
-  btnLeft(){
-    if (this.idAudio< 7){
-      if (this.testVariable == 1){
-        this.counterLeft +=2;
-      }else {
-        this.counterLeft --;
-
-      }
-      this.playGif();
-      this.playAudioRight();
-    }else{
-      this.graph = true;
-      this.initGraph();
-    }
-
-  }
-
-  btnNone(){
-    this.playGif();
-    this.btnRight();
-    this.idAudio++;
-
-  }
-
-  //mostrar grafica
-  initGraph(){
+  initGraph() {
     const tiempoDeEspera = 2000; // 2000 milisegundos (2 segundos)
 
     setTimeout(() => {
       this.getMonthlySalesData();
-
     }, tiempoDeEspera);
-
-  }
-
-  scheduleAppointment(){
-    this._router.navigateByUrl('/doctor');
-    this.closeModal();
-  }
-
-  closeModal(){
-    this.dialog.closeAll();
-
-  }
-
-  openModalTestCertificate() {
-    const nameTest = "Prueba derecha e izquierda";
-    this.dialog.open(TestCertificateComponent, {
-      data: nameTest,
-      width: '700px',
-      height: '500px'
-    })
   }
 
 
-  playAudioLeft() {
-    this.testVariable = 1;
-    const audioContext = new (window.AudioContext)();
+  getMonthlySalesData1() {
+    const data: UserResponseData = {
+      name: 'Juan Sebastian',
+      total_sales: this.graphResul,
 
-    this._test.getAudioRight(this.idAudio).subscribe((data: any) => {
-      audioContext.decodeAudioData(data, (buffer) => {
-        const source = audioContext.createBufferSource();
-        source.buffer = buffer;
 
-        const panNode = audioContext.createStereoPanner();
-        panNode.pan.value = -1;  // Para reproducir solo en el canal izquierdo
-        panNode.connect(audioContext.destination);
-        source.connect(panNode);
-        source.start();
-      });
+    };
+
+    const monthlySalesLabels: string[] = [data.name];
+    const monthlySalesData: number[] = [data.total_sales];
+
+    this.createMonthlySalesGraph1(monthlySalesLabels, monthlySalesData);
+  }
+
+  createMonthlySalesGraph1(monthlySalesLabels: string[], monthlySalesData: number[]) {
+    this.monthlySalesGraph1 = new Chart(this.monthlySalesGraphRef1.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: monthlySalesLabels,
+        datasets: [
+          {
+            label: 'Respuestas correctas',
+            data: monthlySalesData,
+            backgroundColor: monthlySalesData.map(d => {
+              if (d <= 3) {
+                return 'rgba(255, 0, 0, 0.7)'; // Rojo
+              } else if (d === 4 || d === 5) {
+                return 'rgba(0, 0, 255, 0.7)'; // Azul
+              } else {
+                return 'rgba(0, 255, 0, 0.7)'; // Verde
+              }
+            }),
+            borderColor: monthlySalesData.map(d => {
+              if (d <= 3) {
+                return 'rgba(255, 0, 0, 1)';
+              } else if (d === 4 || d === 5) {
+                return 'rgba(0, 0, 255, 1)';
+              } else {
+                return 'rgba(0, 255, 0, 1)';
+              }
+            }),
+            borderWidth: 1,
+            barPercentage: 0.5,
+            categoryPercentage: 0.8
+          }
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            position: 'left',
+            min: 1,
+            max: 6
+          },
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              align: 'center'
+            }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          datalabels: {
+            display: false
+          }
+        }
+      },
     });
-
   }
-  playAudioRight() {
-    this.testVariable = 2;
-    const audioContext = new (window.AudioContext)();
 
-    this._test.getAudioRight(this.idAudio).subscribe((data: any) => {
-      audioContext.decodeAudioData(data, (buffer) => {
-        const source = audioContext.createBufferSource();
-        source.buffer = buffer;
+  initGraph1() {
+    const tiempoDeEspera = 2000; // 2000 milisegundos (2 segundos)
 
-        const panNode = audioContext.createStereoPanner();
-        panNode.pan.value = 1;  // Para reproducir solo en el canal izquierdo
-        panNode.connect(audioContext.destination);
-        source.connect(panNode);
-        source.start();
-      });
-    });
-
+    setTimeout(() => {
+      this.getMonthlySalesData1();
+    }, tiempoDeEspera);
   }
 
 }
