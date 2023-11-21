@@ -81,11 +81,11 @@ export class GraphUserComponent implements OnInit {
   public monthlySalesGraph1!: Chart;
 
 
-  counterRight: number = 0;
-  counterLeft: number = 0;
+  counterRight: number = 6;
+  counterLeft: number = 10;
 
 
-  resultGraph !: number;
+  resultGraph : number = 3;
 
   constructor(private _appService: AppService) {
     this._appService.getGraphResult.subscribe((graphResultValue) => {
@@ -101,7 +101,7 @@ export class GraphUserComponent implements OnInit {
     const graphResultFromLocalStorage = localStorage.getItem('graphResult');
 
     if (graphResultFromLocalStorage !== null) {
-      this.resultGraph = +graphResultFromLocalStorage;
+      // this.resultGraph = +graphResultFromLocalStorage;
 
       console.log('Valor recuperado de localStorage:', this.resultGraph);
     } else {
