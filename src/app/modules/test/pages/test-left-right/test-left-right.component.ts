@@ -96,6 +96,7 @@ export class TestLeftRightComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('TestLeftRightComponent');
     this.playAudioLeft();
     this.playGif();
   }

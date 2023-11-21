@@ -11,8 +11,7 @@ import { TestCertificateComponent } from './pages/test-certificate/test-certific
 
 @NgModule({
   declarations: [
-    TestNumericNewComponent,
-    TestLeftRightComponent,
+
     TestCertificateComponent,
   ],
   imports: [
@@ -20,7 +19,6 @@ import { TestCertificateComponent } from './pages/test-certificate/test-certific
     ReactiveFormsModule,
     SharedModule,
     TestRoutingModule,
-
   ],
   exports: [
   ]

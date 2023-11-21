@@ -1,5 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { Injectable } from '@angular/core';
+import {Component, ElementRef, Injectable, OnInit, ViewChild} from '@angular/core';
 import {
   ArcElement,
   BarController,
@@ -29,6 +28,8 @@ import {
 } from 'chart.js';
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {SalesMonthlyResponse, UserResponseData} from "../../../test/interfaces/test-left-right.interface";
+import {TestNumericService} from "../../../test/service/test-numeric.service";
+import {AppService} from "../../../../app.service";
 
 
 Chart.register(
@@ -58,6 +59,7 @@ Chart.register(
   SubTitle,
   ChartDataLabels
 );
+
 @Injectable({
   providedIn: 'root',
 })
@@ -75,22 +77,36 @@ export class GraphUserComponent implements OnInit {
   public monthlySalesGraph!: Chart;
 
 
-
   @ViewChild('monthlySalesGraph1') private monthlySalesGraphRef1!: ElementRef;
   public monthlySalesGraph1!: Chart;
-
 
 
   counterRight: number = 0;
   counterLeft: number = 0;
 
 
-  graphResul: number = 5;
-  constructor() { }
+  resultGraph !: number;
+
+  constructor(private _appService: AppService) {
+    this._appService.getGraphResult.subscribe((graphResultValue) => {
+      console.log(graphResultValue);
+    })
+  }
 
   ngOnInit(): void {
     this.initGraph();
     this.initGraph1();
+    console.log("GraphUserComponent");
+
+    const graphResultFromLocalStorage = localStorage.getItem('graphResult');
+
+    if (graphResultFromLocalStorage !== null) {
+      this.resultGraph = +graphResultFromLocalStorage;
+
+      console.log('Valor recuperado de localStorage:', this.resultGraph);
+    } else {
+      console.log('La variable no está presente en el localStorage');
+    }
   }
 
 
@@ -198,7 +214,7 @@ export class GraphUserComponent implements OnInit {
   getMonthlySalesData1() {
     const data: UserResponseData = {
       name: 'Juan Sebastian',
-      total_sales: this.graphResul,
+      total_sales: this.resultGraph
 
 
     };

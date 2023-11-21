@@ -3,7 +3,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TestNumericService} from "../../service/test-numeric.service";
 import {AlertService} from "../../../../core/services/alert.service";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { EventEmitter, Output } from '@angular/core';
 
 
 import {
@@ -33,10 +32,12 @@ import {
   Title,
   Tooltip
 } from 'chart.js';
-import { UserResponseData} from "../../interfaces/test-left-right.interface";
+import {UserResponseData} from "../../interfaces/test-left-right.interface";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {TestCertificateComponent} from "../test-certificate/test-certificate.component";
+import {Observable, Subject} from "rxjs";
+import {AppService} from "../../../../app.service";
 
 Chart.register(
   ArcElement,
@@ -75,44 +76,47 @@ Chart.register(
 
 
 export class TestNumericNewComponent implements OnInit {
-  @Output() graphResultEvent = new EventEmitter<number>();
   @ViewChild('monthlySalesGraph') private monthlySalesGraphRef!: ElementRef;
   public monthlySalesGraph!: Chart;
 
+
   public testForm: FormGroup = new FormGroup({});
   idAudio: number = 1;
-  graphResul: number = 5;
-
+  graphResult: number = 6;
 
 
   constructor(
     private renderer: Renderer2,
+    private _appService: AppService,
     private _test: TestNumericService,
-    private _alert: AlertService ,
+    private _alert: AlertService,
     private _router: Router,
     private dialog: MatDialog,
-
-
   ) {
+    this._appService.setGraphResult(this.graphResult);
   }
 
   ngOnInit(): void {
+    console.log('TestNumericNewComponent');
+    console.log(this.graphResult);
     this.playAudio();
     this.initFormTest();
+
   }
+
 
   updateGraphResult(): void {
-    const newResult: number = this.graphResul;
-    this.graphResultEvent.emit(newResult);
-  }
 
+    localStorage.setItem('graphResult', this.graphResult.toString());
+
+  }
 
 
   //grafica
   getMonthlySalesData() {
     const data: UserResponseData = {
       name: 'Juan Sebastian',
-      total_sales: this.graphResul,
+      total_sales: this.graphResult,
 
 
     };
@@ -187,7 +191,7 @@ export class TestNumericNewComponent implements OnInit {
     });
   }
 
-  initGraph(){
+  initGraph() {
     const tiempoDeEspera = 2000; // 2000 milisegundos (2 segundos)
 
     setTimeout(() => {
@@ -208,7 +212,7 @@ export class TestNumericNewComponent implements OnInit {
       const data: any = {
         inputNumbers: this.testForm.get('input_numbers')?.value,
       }
-      console.log("entro"+ data)
+      console.log("entro" + data)
 
       this._test.submitResults(data).subscribe({
         next: () => {
@@ -227,7 +231,7 @@ export class TestNumericNewComponent implements OnInit {
       this.idAudio++;
       console.log(this.idAudio);
       this.playAudio();
-      if (this.idAudio=== 8){
+      if (this.idAudio === 8) {
         this.initGraph();
         this.updateGraphResult();
 
@@ -248,12 +252,12 @@ export class TestNumericNewComponent implements OnInit {
     this.testForm.get('input_numbers')?.setValue(currentInputValue + number);
   }
 
-  scheduleAppointment(){
+  scheduleAppointment() {
     this._router.navigateByUrl('/doctor');
     this.closeModal();
   }
 
-  closeModal(){
+  closeModal() {
     this.dialog.closeAll();
 
   }

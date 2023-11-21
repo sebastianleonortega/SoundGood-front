@@ -1,22 +1,24 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CoreModule } from "./core/core.module";
-import { SharedModule } from "./shared/shared.module";
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {CoreModule} from "./core/core.module";
+import {SharedModule} from "./shared/shared.module";
 import {CommonModule, LocationStrategy, PathLocationStrategy} from "@angular/common";
-import { AlertService } from "./core/services/alert.service";
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AlertService} from "./core/services/alert.service";
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {AppointmentModule} from "./modules/appointment/appointment.module";
 import {ReminderModule} from "./modules/reminder/reminder.module";
 import {TestModule} from "./modules/test/test.module";
 import {MedicalViewModule} from "./modules/medical-view/medical-view.module";
+import {TestNumericNewComponent} from "./modules/test/pages/test-numeric-new/test-numeric-new.component";
+import {TestLeftRightComponent} from "./modules/test/pages/test-left-right/test-left-right.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +34,7 @@ import {MedicalViewModule} from "./modules/medical-view/medical-view.module";
     }),
     MatDialogModule,
     TestModule,
-    MedicalViewModule
-
+    MedicalViewModule,
   ],
   providers: [
     {
@@ -44,4 +45,5 @@ import {MedicalViewModule} from "./modules/medical-view/medical-view.module";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

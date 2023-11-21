@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {TestNumericNewComponent} from "../../../test/pages/test-numeric-new/test-numeric-new.component";
+import {Component, OnInit} from '@angular/core';
 import {DocumentsComponent} from "../documents/documents.component";
 import {MatDialog} from "@angular/material/dialog";
 import {GraphUserComponent} from "../graph-user/graph-user.component";
 import {TableUserComponent} from "../table-user/table-user.component";
 import {TableAppointmentComponent} from "../table-appointment/table-appointment.component";
+import {TestNumericService} from "../../../test/service/test-numeric.service";
+import {AppService} from "../../../../app.service";
 
 @Component({
   selector: 'app-medical-view',
@@ -58,16 +59,24 @@ export class MedicalViewComponent implements OnInit {
     }
     // Agrega más citas simuladas si lo necesitas
   ];
+
   constructor(
     private _dialog: MatDialog,
+  ) {
 
-  ) { }
+  }
 
   ngOnInit(): void {
+
+
+
+
   }
 
   openModalDocument() {
+    const data = 1;
     this._dialog.open(DocumentsComponent, {
+      data: data,
       width: '500px',
       height: '500px'
     })
