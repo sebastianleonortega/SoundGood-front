@@ -101,6 +101,13 @@ export class TestLeftRightComponent implements OnInit {
     this.playGif();
   }
 
+  updateGraphResult(): void {
+
+    localStorage.setItem('counterRight', this.counterRight.toString());
+    localStorage.setItem('counterLeft', this.counterLeft.toString());
+
+  }
+
   playGif() {
     this.isGifPlaying = true;
 
@@ -220,6 +227,7 @@ export class TestLeftRightComponent implements OnInit {
     }else {
       this.graph = true;
       this.initGraph();
+      this.updateGraphResult();
     }
   }
 
@@ -236,6 +244,8 @@ export class TestLeftRightComponent implements OnInit {
     }else{
       this.graph = true;
       this.initGraph();
+      this.updateGraphResult();
+
     }
 
   }
@@ -244,6 +254,8 @@ export class TestLeftRightComponent implements OnInit {
     this.playGif();
     this.btnRight();
     this.idAudio++;
+    this.updateGraphResult();
+
 
   }
 

@@ -1,1 +1,27 @@
-<p>table-appointment works!</p>
+
+
+
+<div class="table-result">
+
+
+  <table>
+    <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Nombre de Usuario</th>
+      <th>Correo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let appointment of appointments">
+      <td>{{ appointment.date }}</td>
+      <td>{{ appointment.time }}</td>
+      <td>{{ appointment.user.name }} {{ appointment.user.lastName }}</td>
+      <td>{{ appointment.user.email }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>

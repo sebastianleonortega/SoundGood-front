@@ -9,7 +9,7 @@
       </div>
       <div class="info">
         <span class="title-info">Pacientes</span>
-        <span>Revisa información sobre los resultados de tus pacientes en tiempo real</span>
+        <span>Revisa información sobre tus pacientes en tiempo real</span>
         <button (click)="openModalUser()">Ver tabla</button>
       </div>
     </div>
@@ -51,47 +51,5 @@
     </div>
 
   </div>
-  <div class="table-result">
-    <table>
-      <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Email</th>
-        <th>Tipo de Pérdida de Audición</th>
-        <th>Tratamientos Previos</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let patient of patientsData">
-        <td>{{ patient.name }}</td>
-        <td>{{ patient.lastName }}</td>
-        <td>{{ patient.email }}</td>
-        <td>{{ patient.typeOfHearingLoss }}</td>
-        <td>{{ patient.previousTreatments }}</td>
-      </tr>
-      </tbody>
-    </table>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Nombre de Usuario</th>
-        <th>Correo</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let appointment of appointments">
-        <td>{{ appointment.date }}</td>
-        <td>{{ appointment.time }}</td>
-        <td>{{ appointment.user.name }} {{ appointment.user.lastName }}</td>
-        <td>{{ appointment.user.email }}</td>
-      </tr>
-      </tbody>
-    </table>
-
-
-  </div>
 </div>
