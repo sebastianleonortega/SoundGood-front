@@ -5,15 +5,15 @@
 
     <div class="left-info-doctor">
 
-        <div class="doctor-info" *ngFor="let doctor of doctors">
+        <div class="doctor-info" >
             <div class="doctor-img">
-                <img src="{{doctor.image}}" alt="Imagen del medico">
+                <img src="{{image}}" alt="Imagen del medico">
             </div>
             <div class="member-info">
-                <span>Dr. {{doctor.name}} {{doctor.lastName}} <i class="fa fa-check-circle"></i> </span>
-                <p>{{doctor.speciality}}</p>
+                <span>Dr. {{name}} {{lastName}} <i class="fa fa-check-circle"></i> </span>
+                <p>{{speciality}}</p>
                 <div class="doctor-address">
-                    <span><i class="fa fa-map-marker color-location"></i> {{doctor.address}}</span>
+                    <span><i class="fa fa-map-marker color-location"></i> {{address}}</span>
                     <span><i class="fa fa-calendar color-calendar"></i> {{openingHours}}</span>
                 </div>
             </div>
@@ -34,18 +34,36 @@
         <h2>Solicitar cita</h2>
         <form [formGroup]="scheduleAppointment" (ngSubmit)="sendScheduleAppointment()" >
 
-            <div class="form-group">
-                <label for="appointmentDate">Fecha de la Cita</label>
-                <input placeholder="Ingrese la hora de la cita" formControlName="date" type="date" id="appointmentDate" name="appointmentDate">
-            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="appointmentDate">Fecha de la Cita</label>-->
+<!--                <input placeholder="Ingrese la hora de la cita" formControlName="date" type="date" id="appointmentDate" name="appointmentDate">-->
+<!--            </div>-->
 
+          <div class="form-container datepicker-line">
             <div class="form-group">
+              <label class="form-label">Fecha de nacimiento</label>
+              <div class="input-container">
+                <input [matDatepicker]="personBirthdate"
+                       [min]="dateNow" class="form-input"
+                       formControlName="date" matInput
+                       placeholder="DD/MM/YYYY">
+                <mat-datepicker-toggle [for]="personBirthdate" class="button mat-icon-button"
+                                       matSuffix>
+                  <mat-icon>calendar_today</mat-icon>
+                </mat-datepicker-toggle>
+              </div>
+              <mat-datepicker panelClass="datepickerOne" #personBirthdate></mat-datepicker>
+            </div>
+          </div>
+
+
+          <div class="form-group">
                 <label for="appointmentTime">Hora de la Cita</label>
                 <select formControlName="time" id="appointmentTime" name="appointmentTime">
-                    <option value="8:00">8:00-8:30</option>
-                    <option value="8:3">8:30-9:00</option>
-                    <option value="9:0">9:00-9:30</option>
-                    <option value="9:30">9:30-10:00</option>
+                    <option value="08:00">08:00-08:30</option>
+                    <option value="08:30">08:30-09:00</option>
+                    <option value="09:00">09:00-09:30</option>
+                    <option value="09:30">09:30-10:00</option>
                     <option value="10:00">10:00-10:30</option>
                     <option value="10:30">10:30-11:00</option>
                     <option value="11:00">11:00-11:30</option>
@@ -56,6 +74,7 @@
                     <option value="15:30">15:30-16:00</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="specialty">Especialidad</label>
                 <select formControlName="specialty" id="specialty" name="specialty">

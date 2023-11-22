@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   background-color: #edeff2;
-  height: 96%;
+  height: 84.8%;
 
   .left-info-doctor {
     margin: 20px;
@@ -127,6 +127,14 @@
     margin: 20px;
     flex: 1;
 
+    h2{
+      color: #0077ff;
+      font-weight: bold;
+
+    }
+
+
+
     form {
       display: flex;
       justify-content: center;
@@ -140,6 +148,61 @@
         label {
           font-size: 14px;
           display: block;
+        }
+
+        /* Añade estilos para el select */
+        .form-group select {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          background-color: #fff;
+          color: #333;
+          outline: none;
+          cursor: pointer;
+
+          /* Estilos al pasar el ratón sobre las opciones */
+          option:hover {
+            background-color: #0077FF;
+            color: #fff;
+          }
+        }
+
+
+        .datepicker {
+          .form-group {
+            .form-input {
+              margin-top: 0 !important;
+              height: 20px !important;
+              box-sizing: content-box;
+              width: 262px !important;
+            }
+          }
+
+          .mat-icon-button {
+            margin-top: 2px;
+          }
+
+          .button {
+            position: absolute;
+            right: 0;
+            top: 22px;
+          }
+        }
+
+        .datepicker-line {
+          .form-input {
+            height: 36px !important;
+            width: 100% !important;
+            margin-top: 0 !important;
+          }
+
+          .mat-icon-button {
+            position: absolute !important;
+            right: 0 !important;
+            bottom: 0 !important;
+          }
         }
 
         input {
@@ -235,4 +298,22 @@
     }
   }
 
+}
+.input-container {
+  position: relative;
+  width: 100%;
+
+  .form-input {
+    height: 36px;
+    width: calc(100% - 32px);
+    margin-top: 0;
+    padding-right: 32px; // Asegura espacio suficiente para el icono del calendario
+  }
+
+  .mat-icon-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }

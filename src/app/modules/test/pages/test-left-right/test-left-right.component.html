@@ -19,15 +19,15 @@
 
   <div class="options">
     <div class="option">
-      <button (click)="btnLeft()" class="hearing-button" >Escuché por el oído izquierdo</button>
+      <button (click)="btnLeft()" class="hearing-button" [disabled]="isButtonsDisabled" >Escuché por el oído izquierdo</button>
     </div>
     <div class="option">
-      <button (click)="btnRight()" class="hearing-button">Escuché por el oído derecho</button>
+      <button (click)="btnRight()" class="hearing-button" [disabled]="isButtonsDisabled">Escuché por el oído derecho</button>
     </div>
   </div>
 
   <div class="option">
-    <button (click)="btnNone()" class="hearing-button" >No escuché nada</button>
+    <button (click)="btnNone()" class="hearing-button" [disabled]="isButtonsDisabled">No escuché nada</button>
   </div>
 
 </div>

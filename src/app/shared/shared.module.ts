@@ -8,6 +8,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { CarrouselComponent } from './layouts/carrousel/carrousel.component';
 import { HeaderMedicalComponent } from './layouts/header-medical/header-medical.component';
 import {RouterModule} from "@angular/router";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 
@@ -24,7 +26,9 @@ import {RouterModule} from "@angular/router";
     ReactiveFormsModule,
     HttpClientModule,
     SwiperModule,
-    RouterModule
+    RouterModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   exports: [
@@ -37,7 +41,9 @@ import {RouterModule} from "@angular/router";
     FooterComponent,
     CarrouselComponent,
     HeaderMedicalComponent,
-    RouterModule
+    RouterModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
 
   ]

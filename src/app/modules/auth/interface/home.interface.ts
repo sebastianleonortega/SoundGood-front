@@ -14,11 +14,12 @@ export interface Experience {
 
 }
 
-export interface DoctorResponse {
-  id: number;
-  name: string;
-  lastname: string;
-  specialty: string;
-  image: string;
+export interface DoctorRes {
   address: string;
+  id: number;
+  lastName: string;
+  name: string;
+  speciality: string;
+  image: string;
+
 }

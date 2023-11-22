@@ -32,6 +32,8 @@ import {SalesMonthlyResponse} from "../../interfaces/test-left-right.interface";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {TestCertificateComponent} from "../test-certificate/test-certificate.component";
+import { Subscription, timer } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 
 
@@ -75,6 +77,8 @@ export class TestLeftRightComponent implements OnInit {
   @ViewChild('monthlySalesGraph') private monthlySalesGraphRef!: ElementRef;
   public monthlySalesGraph!: Chart;
 
+  randomPlaybackSubscription: Subscription | undefined;
+
 
   idAudio: number = 1;
   testVariable: any;
@@ -84,7 +88,8 @@ export class TestLeftRightComponent implements OnInit {
   currentPosition: number = 0;
   gifUrl: string = 'assets/images/git-audio.gif';
   isGifPlaying: boolean = false;
-
+  randomIndex : any;
+  isButtonsDisabled = false;
 
 
   constructor(
@@ -97,8 +102,9 @@ export class TestLeftRightComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('TestLeftRightComponent');
-    this.playAudioLeft();
+    // this.playAudioLeft();
     this.playGif();
+    this.playRandomAudio();
   }
 
   updateGraphResult(): void {
@@ -110,11 +116,13 @@ export class TestLeftRightComponent implements OnInit {
 
   playGif() {
     this.isGifPlaying = true;
+    this.isButtonsDisabled = true;
 
     // Detén el gif después de 5 segundos
     setTimeout(() => {
       this.isGifPlaying = false;
-    }, 2000);
+      this.isButtonsDisabled = false;
+    }, 5000);
   }
 
 
@@ -213,6 +221,8 @@ export class TestLeftRightComponent implements OnInit {
 
   //Botones de pasar audios
   btnRight(){
+
+
     if (this.idAudio< 7) {
 
       if (this.testVariable == 2) {
@@ -288,6 +298,35 @@ export class TestLeftRightComponent implements OnInit {
       height: '500px'
     })
   }
+
+
+  // Función para reproducir de forma aleatoria
+  playRandomAudio() {
+    // Detén cualquier reproducción aleatoria existente
+    if (this.randomPlaybackSubscription) {
+      this.randomPlaybackSubscription.unsubscribe();
+    }
+
+    // Genera un número aleatorio (0 o 1)
+    this.randomIndex = Math.floor(Math.random() * 2);
+
+    // Elige la función de reproducción según el número aleatorio
+    const randomFunction = this.randomIndex === 0 ? this.playAudioLeft : this.playAudioRight;
+
+    if (this.randomIndex === 1){
+      this.counterRight+=2;
+
+    }
+
+    // Ejecuta la función de reproducción
+    randomFunction.call(this);
+
+    // Reproduce nuevamente de forma aleatoria después de un intervalo de tiempo (por ejemplo, 5 segundos)
+    this.randomPlaybackSubscription = timer(5000).pipe(take(1)).subscribe(() => {
+      // this.playRandomAudio();
+    });
+  }
+
 
 
   playAudioLeft() {

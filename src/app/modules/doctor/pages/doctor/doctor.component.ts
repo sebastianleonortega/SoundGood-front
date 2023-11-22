@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Doctor, DoctorResponse} from "../../../auth/interface/home.interface";
+import {DoctorRes} from "../../../auth/interface/home.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AlertService} from "../../../../core/services/alert.service";
 import {DoctorService} from "../service/doctor.service";
@@ -19,17 +19,24 @@ export class DoctorComponent implements OnInit {
   doctorId: any;
   openingHours: string = '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes';
 
+  address: string = '';
+  id: number = 0;
+  lastName: string = '';
+  name: string = '';
+  speciality: string = '';
+  image: string = '';
 
-  doctors: DoctorResponse[] = [
-    {
-      id: 0,
-      name: '',
-      lastname: '',
-      specialty: '',
-      image: '',
-      address: '',
-    }
-  ];
+  dateNow: Date = new Date();
+
+
+  doctors: DoctorRes = {
+    address: '',
+    id: 0,
+    lastName: '',
+    name: '',
+    speciality:'',
+    image: '',
+  };
 
   constructor(
     private _doctor: DoctorService,
@@ -38,125 +45,8 @@ export class DoctorComponent implements OnInit {
   ) {
   }
 
-  doctors2: Doctor[] = [
-    {
-      id: 1,
-      name: 'Mario Alejandro',
-      lastname: 'Contreras Gutierrez',
-      specialty: 'Terapeuta complementario, Médico general',
-      img: 'assets/images/doc1.png',
-      address: 'Calle 12 N°. 16-30 Edificio Santa Maria Local 1, Ocaña',
-      openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
-      experience: [
-        {
-
-          experienceName: 'Acupuntura'
-        },
-        {
-          experienceName: 'Terapia Neuronal'
-        }
-      ]
-    }
-  ]
-
-  doctorss: Doctor[] = [
-    {
-      id: 1,
-      name: 'Mario Alejandro',
-      lastname: 'Contreras Gutierrez',
-      specialty: 'Terapeuta complementario, Médico general',
-      img: 'assets/images/doc1.png',
-      openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
-      address: '',
-      experience: [
-        {
-
-          experienceName: 'Acupuntura'
-        },
-        {
-          experienceName: 'Terapia Neuronal'
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: 'Sandrith Tatiana',
-      lastname: 'Guerrero Rincon',
-      specialty: 'Otorrinolaringologo',
-      img: 'assets/images/doc2.png',
-      openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
-      address: '',
-      experience: [
-        {
-          experienceName: 'Acupuntura'
-        },
-        {
-          experienceName: 'Terapia Neuronal'
-        }
-      ]
-    },
-    {
-      id: 3,
-      name: 'Edgardo Enrique',
-      lastname: 'Paba Gonzalez',
-      specialty: 'Médico general',
-      img: 'assets/images/doc3.png',
-      address: '',
-      openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
-      experience: [
-        {
-
-          experienceName: 'Acupuntura'
-        },
-        {
-          experienceName: 'Terapia Neuronal'
-        }
-      ]
-    },
-    {
-      id: 4,
-      name: 'Mildreth Amanda',
-      lastname: 'Carrascal Torrado',
-      specialty: 'Médico general',
-      img: 'assets/images/doc4.png',
-      address: '',
-      openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
-      experience: [
-        {
-
-          experienceName: 'Acupuntura'
-        },
-        {
-          experienceName: 'Terapia Neuronal'
-        }
-      ]
-    },
-    {
-      id: 5,
-      name: 'Juan Carlos',
-      lastname: 'Jimenez Illera',
-      specialty: 'Médico general',
-      img: 'assets/images/doc5.png',
-      address: '',
-      openingHours: '8:00 - 12:00 & 2:00 - 6:00 de lunes a viernes',
-      experience: [
-        {
-
-          experienceName: 'Acupuntura'
-        },
-        {
-          experienceName: 'Terapia Neuronal'
-        }
-      ]
-    },
-  ]
 
 
-  showDoctor() {
-    if (this.doctorId === 1) {
-
-    }
-  }
 
 
   ngOnInit(): void {
@@ -203,10 +93,12 @@ export class DoctorComponent implements OnInit {
 
 
       this._doctor.createAppointment(data).subscribe({
-        next: () => {
-          this._alert.success("Cita registrada");
-          this.scheduleAppointment.reset();
+        error: () => {
+          this._alert.warning("Ya existe una cita registrada en esta fecha y hora");
+        }, next: (error) =>{
           window.scrollTo(0, 0);
+          this.scheduleAppointment.reset();
+          this._alert.success("Cita registrada");
         }
       });
     }
@@ -217,7 +109,15 @@ export class DoctorComponent implements OnInit {
     this._doctor.getDoctorById(this.doctorId).subscribe({
       next: (data) => {
         this.doctors = data;
-        console.log(data)
+        // console.log(data)
+
+
+
+        this.address = data.address;
+        this.lastName= data.lastName;
+        this.name= data.name;
+        this.speciality= data.speciality;
+        this.image= data.image;
       }
     })
   }
