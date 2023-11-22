@@ -1,5 +1,7 @@
+<div class="title-table">
 
-
+  <span> Citas  </span>
+</div>
 
 <div class="table-result">
 
@@ -15,7 +17,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let appointment of appointments">
-      <td>{{ appointment.date }}</td>
+      <td>{{ appointment.date.split('T')[0] }}</td>
       <td>{{ appointment.time }}</td>
       <td>{{ appointment.user.name }} {{ appointment.user.lastName }}</td>
       <td>{{ appointment.user.email }}</td>

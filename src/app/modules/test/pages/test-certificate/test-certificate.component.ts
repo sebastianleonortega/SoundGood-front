@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Inject } from '@angular/core';
 import {TestNumericNewComponent} from "../test-numeric-new/test-numeric-new.component";
 import {MatDialogRef} from "@angular/material/dialog";
 import * as html2canvas from 'html2canvas';
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+
 
 
 @Component({
@@ -14,6 +16,8 @@ export class TestCertificateComponent implements OnInit {
 
   @Input() nombreUsuario: string = 'Juan Leon';
   constructor(
+    @Inject(MAT_DIALOG_DATA) public nameTest: any,
+
     private dialogRef: MatDialogRef<TestNumericNewComponent>
 
 

@@ -1,7 +1,8 @@
 <app-header></app-header>
 <app-carrousel></app-carrousel>
-
+<app-carrousel></app-carrousel>
 <div class="wrapper-home">
+
 
   <div class="content-carousel">
     <swiper [config]="config">
@@ -109,8 +110,8 @@
     </div>
 
 
-    <div class="content-card-doctor">
-      <div class="card-doctor" *ngFor="let doctor of doctors" (click)="OnDoctor()">
+    <div class="content-card-doctor"  >
+      <div class="card-doctor" *ngFor="let doctor of doctors"  routerLink="/doctor/{{doctor.id}} " >
         <img src="{{doctor.img}}" alt="Imagen del medico">
         <div class="social">
           <i class="fa fa-twitter color-blue"></i>

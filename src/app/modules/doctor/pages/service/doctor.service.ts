@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class DoctorService {
 
-  private apiUrl = 'http://localhost:8080/api/appointments';
+  private apiUrl = 'http://localhost:8080/api/';
 
   constructor(private http: HttpClient) { }
 
   public createAppointment(data: any):Observable<any>{
-    return this.http.post(this.apiUrl, data);
+    return this.http.post(this.apiUrl+"appointments", data);
+  }
+
+  getDoctorById(id: string) {
+    return this.http.get(this.apiUrl+"doctors/"+id);
   }
 }

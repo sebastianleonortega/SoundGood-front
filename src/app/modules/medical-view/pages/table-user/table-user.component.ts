@@ -11,18 +11,18 @@ export class TableUserComponent implements OnInit {
     {
       name: 'Sebastian',
       lastName: 'Leon',
-      email: 'correo1@ejemplo.com',
+      email: 'jsleono@ufpso.edu.co',
       password: 'contrasenaSegura1',
-      typeOfHearingLoss: 'Tipo de pérdida de audición 1',
-      previousTreatments: 'Tratamientos previos 1',
+      typeOfHearingLoss: 'Conductiva',
+      previousTreatments: 'Extracción de tapones de cerumen',
     },
     {
-      name: 'Usuario',
-      lastName: 'Ejemplo',
-      email: 'correo2@ejemplo.com',
+      name: 'Diany',
+      lastName: 'Garcia Carrascal',
+      email: 'digarcia@ufpso.edu.co',
       password: 'contrasenaSegura2',
-      typeOfHearingLoss: 'Tipo de pérdida de audición 2',
-      previousTreatments: 'Tratamientos previos 2',
+      typeOfHearingLoss: 'Mixta',
+      previousTreatments: 'Cirugía radical de oído',
     },
     // Agrega más pacientes si es necesario
   ];

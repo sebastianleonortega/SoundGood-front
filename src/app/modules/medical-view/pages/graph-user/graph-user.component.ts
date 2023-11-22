@@ -104,6 +104,7 @@ export class GraphUserComponent implements OnInit {
 
     if (graphResultFromLocalStorage !== null) {
       this.resultGraph = +graphResultFromLocalStorage;
+      console.log(this.resultGraph)
     }
 
     if (graphResultFromLocalStorageRight !== null) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppointmentService} from "../../../appointment/service/appointment.service";
 
 @Component({
   selector: 'app-table-appointment',
@@ -7,36 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableAppointmentComponent implements OnInit {
 
-  public appointments: any[] = [
-    {
-      id: 10,
-      date: '2023-11-09',
-      time: '10:00:00',
-      speciality: null,
-      address: 'kdx 418 - 140',
-      user: {
-        id: 1,
-        name: 'Sebastian',
-        lastName: 'Leon',
-        email: 'correo@ejemplo.com',
-        password: 'contrasenaSegura',
-        typeOfHearingLoss: 'Tipo de pérdida de audición',
-        previousTreatments: 'Tratamientos previos'
-      },
-      doctor: {
-        id: 1,
-        name: 'Ruben ',
-        lastName: 'Restrepo Zalazar',
-        speciality: 'Otorrinolaringólogo',
-        address: 'DireccionDoctor'
-      }
-    }
-    // Agrega más citas simuladas si lo necesitas
-  ];
+  public appointments: any;
 
-  constructor() { }
+  constructor(
+    private _appoint: AppointmentService,
+
+  ) { }
 
   ngOnInit(): void {
+    this.getAllAppointment();
+  }
+
+  getAllAppointment() {
+    this._appoint.getAllAppointment().subscribe({
+      next: (data) => {
+        this.appointments = data;
+
+      }
+    })
+
+
+
   }
 
 }

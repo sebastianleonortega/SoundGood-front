@@ -13,13 +13,22 @@ export class TestNumericService {
   constructor(private http: HttpClient) {
   }
 
-  public submitResults(inputNumbers: string): Observable<any> {
-    return this.http.post(this.apiUrl + "/submit-results", inputNumbers);
+  public submitResults(data: string): Observable<any> {
+    return this.http.post(this.apiUrl + "/submit-results", data);
   }
 
   getAudio(id: number) {
     return this.http.get(this.apiUrl + "/audio/" + id, {responseType: 'arraybuffer'});
   }
+
+  public deleteSubmitResults(): Observable<any> {
+    return this.http.get(this.apiUrl + "/reset-correct-answers-count");
+  }
+
+  getResult() {
+    return this.http.get(this.apiUrl + "/correct-answers-count");
+  }
+
 
   getAudioLeft(id: number) {
     return this.http.get(this.apiUrl + "/audio-left/" + id, {responseType: 'arraybuffer'});

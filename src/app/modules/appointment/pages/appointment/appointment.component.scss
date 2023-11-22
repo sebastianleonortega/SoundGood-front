@@ -1,14 +1,12 @@
 .appointment-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
-  overflow: hidden;
+
 
 
   .close-profile {
@@ -31,74 +29,84 @@
     }
   }
 
-  h2 {
-    color: #0077ff;
-    width: 100%;
-    height: 60px;
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 10px;
-    background-color: white;
-    font-size: 24px;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
+  .appointment-list{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
 
-    li {
-      display: flex;
-      justify-content: space-between;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 10px 0;
+    h2 {
+      color: #0077ff;
+      font-size: 24px;
+    }
 
-      .info-appointment {
-        display: flex;
-        flex-direction: column;
+    ul {
+      width: 100%;
+      height: 86%;
+      overflow: scroll;
+      list-style: none;
+      padding: 0;
+      margin: 0;
 
-        span {
-          font-size: 14px;
-          margin: 5px 0;
-        }
-
-        .btn-banger {
-          margin: 0 10px;
-          padding: 6px;
-          background-color: #FF3333;
-          color: #fff;
-          border: none;
-          outline: none;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 16px;
-          text-align: center;
-          text-decoration: none;
-          transition: background-color 0.3s, color 0.3s;
-
-          &:hover {
-            background-color: red;
-          }
-        }
+      /* Regla para ocultar la barra de desplazamiento en navegadores WebKit */
+      &::-webkit-scrollbar {
+        display: none;
       }
 
-      .appointment-map {
+      li {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
 
-        .map {
-          width: 150px;
-          height: 150px;
+        .info-appointment {
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-size: 14px;
+            margin: 5px 0;
+          }
+
+          .btn-banger {
+            margin: 0 10px;
+            padding: 6px;
+            background-color: #FF3333;
+            color: #fff;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+
+            &:hover {
+              background-color: red;
+            }
+          }
+        }
+
+        .appointment-map {
+          display: flex;
+          justify-content: center;
+
+          .map {
+            width: 150px;
+            height: 150px;
+          }
         }
       }
     }
   }
+
+
 
 }
 

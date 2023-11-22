@@ -1,55 +1,55 @@
 <app-header-medical></app-header-medical>
 
 <div class="wrapper-medical-view">
-  <div class="content-user-appointment">
-    <!-- Sección de Pacientes -->
-    <div class="card users-medical">
-      <div class="img">
-        <i class="fa fa-user"></i>
-      </div>
-      <div class="info">
-        <span class="title-info">Pacientes</span>
-        <span>Revisa información sobre tus pacientes en tiempo real</span>
-        <button (click)="openModalUser()">Ver tabla</button>
-      </div>
-    </div>
+    <div class="content-user-appointment">
+        <!-- Sección de Pacientes -->
+        <div class="card users-medical">
+            <div class="img">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="info">
+                <span class="title-info">Pacientes</span>
+                <span>Una lista detallada con información sobre tus pacientes. </span>
+                <button (click)="openModalUser()">Ver tabla</button>
+            </div>
+        </div>
 
-    <!-- Sección de Citas -->
-    <div class="card appointment-medical">
-      <div class="img">
-        <i class="fa fa-calendar"></i>
-      </div>
-      <div class="info">
-        <span class="title-info">Citas</span>
-        <span>Revisa la lista de citas que tienes programada</span>
-        <button (click)="openModalAppointment()">Ver tabla</button>
-      </div>
-    </div>
+        <!-- Sección de Citas -->
+        <div class="card appointment-medical">
+            <div class="img">
+                <i class="fa fa-calendar"></i>
+            </div>
+            <div class="info">
+                <span class="title-info">Citas</span>
+                <span>Revisa la lista de citas que tienes programada.</span>
+                <button (click)="openModalAppointment()">Ver tabla</button>
+            </div>
+        </div>
 
-    <!-- Nueva Sección: Resultados de Audición -->
-    <div class="card audition-results">
-      <div class="img">
-        <i class="fa fa-headphones"></i>
-      </div>
-      <div class="info">
-        <span class="title-info">Resultados de Audición</span>
-        <span>Revisa los resultados de las pruebas de audición de tus pacientes</span>
-        <button (click)="openModalTesResul()">Ver tabla</button>
-      </div>
-    </div>
+        <!-- Nueva Sección: Resultados de Audición -->
+        <div class="card audition-results">
+            <div class="img">
+                <i class="fa fa-headphones"></i>
+            </div>
+            <div class="info">
+                <span class="title-info">Resultados de Audición</span>
+                <span>Revisa el ultimo resultado de las pruebas de audición de un paciente.</span>
+                <button (click)="openModalTesResul()">Ver tabla</button>
+            </div>
+        </div>
 
-    <!-- Nueva Sección: Gestión de Documentos -->
-    <div class="card document-management">
-      <div class="img">
-        <i class="fa fa-file"></i>
-      </div>
-      <div class="info">
-        <span class="title-info">Gestión de Documentos</span>
-        <span>Gestiona los documentos médicos de tus pacientes</span>
-        <button (click)="openModalDocument()">Ver documentos</button>
-      </div>
-    </div>
+        <!-- Nueva Sección: Gestión de Documentos -->
+        <div class="card document-management">
+            <div class="img">
+                <i class="fa fa-file"></i>
+            </div>
+            <div class="info">
+                <span class="title-info">Gestión de Documentos</span>
+                <span>Gestiona los documentos médicos de tus pacientes.</span>
+                <button (click)="openModalDocument()">Ver documentos</button>
+            </div>
+        </div>
 
-  </div>
+    </div>
 
 </div>

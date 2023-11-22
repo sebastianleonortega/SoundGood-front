@@ -114,7 +114,7 @@ export class TestLeftRightComponent implements OnInit {
     // Detén el gif después de 5 segundos
     setTimeout(() => {
       this.isGifPlaying = false;
-    }, 4000);
+    }, 2000);
   }
 
 
@@ -281,7 +281,7 @@ export class TestLeftRightComponent implements OnInit {
   }
 
   openModalTestCertificate() {
-    const nameTest = "Prueba derecha e izquierda";
+    const nameTest = "de derecha e izquierda";
     this.dialog.open(TestCertificateComponent, {
       data: nameTest,
       width: '700px',

@@ -105,7 +105,7 @@ export class ReminderComponent implements OnInit {
         next: () => {
           this.medicationList = true;
           this.getAllReminder();
-
+          this.reminderForm.reset();
           this._alert.success("Recordatorio agregado");
 
         }

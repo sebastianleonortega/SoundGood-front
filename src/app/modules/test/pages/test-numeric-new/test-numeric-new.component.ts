@@ -82,7 +82,7 @@ export class TestNumericNewComponent implements OnInit {
 
   public testForm: FormGroup = new FormGroup({});
   idAudio: number = 1;
-  graphResult: number = 6;
+  graphResult!: number ;
 
 
   constructor(
@@ -93,21 +93,22 @@ export class TestNumericNewComponent implements OnInit {
     private _router: Router,
     private dialog: MatDialog,
   ) {
-    this._appService.setGraphResult(this.graphResult);
   }
 
   ngOnInit(): void {
-    console.log('TestNumericNewComponent');
-    console.log(this.graphResult);
+
     this.playAudio();
     this.initFormTest();
 
+    this._test.deleteSubmitResults().subscribe({
+      next: () =>{
+      }
+    });
   }
 
 
   updateGraphResult(): void {
 
-    localStorage.setItem('graphResult', this.graphResult.toString());
 
   }
 
@@ -208,6 +209,7 @@ export class TestNumericNewComponent implements OnInit {
   }
 
   sendTest() {
+    console.log("no entro")
     if (this.testForm.valid) {
       const data: any = {
         inputNumbers: this.testForm.get('input_numbers')?.value,
@@ -229,12 +231,19 @@ export class TestNumericNewComponent implements OnInit {
       this.testForm.get('input_numbers')?.setValue(inputValue);
 
       this.idAudio++;
-      console.log(this.idAudio);
       this.playAudio();
       if (this.idAudio === 8) {
+        this._test.getResult().subscribe({
+          next: (data) =>{
+            this.graphResult = parseFloat(data.toString());
+            console.log("data convertida mi perro"+this.graphResult +"y a no convertida"+ data)
+            localStorage.setItem('graphResult', this.graphResult.toString());
+
+          }
+        })
+
         this.initGraph();
         this.updateGraphResult();
-
       }
     }
   }
@@ -263,7 +272,7 @@ export class TestNumericNewComponent implements OnInit {
   }
 
   openModalTestCertificate() {
-    const nameTest = "Prueba numerica";
+    const nameTest = "numerica";
 
     this.dialog.open(TestCertificateComponent, {
       data: nameTest,

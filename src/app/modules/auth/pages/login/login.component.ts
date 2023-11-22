@@ -35,14 +35,18 @@ export class LoginComponent implements OnInit {
     if (this.login.valid) {
 
       const data: any = {
-        emai: this.login.get('email')?.value,
+        email: this.login.get('email')?.value,
         password: this.login.get('password')?.value,
       }
+      if (data.email === "doctor@gmail.com"){
+        this.router.navigate(['medical']);
+        this._alert.success("Bienvenido");
 
+      }else{
+        this.router.navigate(['home']);
+        this._alert.success("Bienvenido");
+      }
     }
-
-    this.router.navigate(['home']);
-    this._alert.success("Bienvenido");
 
   }
 

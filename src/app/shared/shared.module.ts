@@ -7,6 +7,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { CarrouselComponent } from './layouts/carrousel/carrousel.component';
 import { HeaderMedicalComponent } from './layouts/header-medical/header-medical.component';
+import {RouterModule} from "@angular/router";
 
 
 
@@ -23,7 +24,7 @@ import { HeaderMedicalComponent } from './layouts/header-medical/header-medical.
     ReactiveFormsModule,
     HttpClientModule,
     SwiperModule,
-
+    RouterModule
 
   ],
   exports: [
@@ -35,7 +36,9 @@ import { HeaderMedicalComponent } from './layouts/header-medical/header-medical.
     HeaderComponent,
     FooterComponent,
     CarrouselComponent,
-    HeaderMedicalComponent
+    HeaderMedicalComponent,
+    RouterModule
+
 
   ]
 })

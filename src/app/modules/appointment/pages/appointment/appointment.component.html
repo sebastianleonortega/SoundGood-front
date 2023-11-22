@@ -2,14 +2,16 @@
   <div class="close-profile">
     <em class="fa fa-close" (click)="close()"></em>
   </div>
-  <h2>Mis Citas</h2>
 
-  <ul *ngIf="!noDate">
+  <div class="appointment-list" *ngIf="!noDate">
+    <h2>Mis Citas</h2>
+    <ul>
+
     <li *ngFor="let cita of citas; let i = index">
       <div class="info-appointment">
         <span>Médico: {{ cita.doctor.name }} {{ cita.doctor.lastName }}</span>
         <span>Especialidad: {{ cita.doctor.speciality }}</span>
-        <span>Fecha: {{ cita.date }}</span>
+        <span>Fecha: {{ cita.date.split('T')[0] }}</span>
         <span>Hora: {{ cita.time }}</span>
         <button (click)="deleteAppointment(cita)" class="btn-banger">Cancelar cita</button>
       </div>
@@ -18,7 +20,9 @@
                 style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </li>
-  </ul>
+    </ul>
+
+  </div>
 
 
 

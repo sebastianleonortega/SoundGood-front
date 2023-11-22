@@ -7,14 +7,14 @@
 
         <div class="doctor-info" *ngFor="let doctor of doctors">
             <div class="doctor-img">
-                <img src="{{doctor.img}}" alt="Imagen del medico">
+                <img src="{{doctor.image}}" alt="Imagen del medico">
             </div>
             <div class="member-info">
-                <span>Dr. {{doctor.name}} {{doctor.lastname}} <i class="fa fa-check-circle"></i> </span>
-                <p>{{doctor.specialty}}</p>
+                <span>Dr. {{doctor.name}} {{doctor.lastName}} <i class="fa fa-check-circle"></i> </span>
+                <p>{{doctor.speciality}}</p>
                 <div class="doctor-address">
                     <span><i class="fa fa-map-marker color-location"></i> {{doctor.address}}</span>
-                    <span><i class="fa fa-calendar color-calendar"></i> {{doctor.openingHours}}</span>
+                    <span><i class="fa fa-calendar color-calendar"></i> {{openingHours}}</span>
                 </div>
             </div>
         </div>
@@ -36,8 +36,9 @@
 
             <div class="form-group">
                 <label for="appointmentDate">Fecha de la Cita</label>
-                <input formControlName="date" type="date" id="appointmentDate" name="appointmentDate">
+                <input placeholder="Ingrese la hora de la cita" formControlName="date" type="date" id="appointmentDate" name="appointmentDate">
             </div>
+
             <div class="form-group">
                 <label for="appointmentTime">Hora de la Cita</label>
                 <select formControlName="time" id="appointmentTime" name="appointmentTime">

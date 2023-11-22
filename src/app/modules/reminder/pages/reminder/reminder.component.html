@@ -9,7 +9,7 @@
     <ul>
       <li *ngFor="let reminder of reminders; let i = index">
         <span class="name-reminder">{{ reminder.medicine }}</span>
-        <span class="time-reminder"> <i class="fa fa-clock-o"></i> {{ reminder.time }}</span>
+        <span class="time-reminder"> <i class="fa fa-clock-o"></i> {{ reminder.time.slice(0, -3) }}</span>
 
         <button class=" btn-edit-reminder">Editar</button>
         <button (click)="deleteReminder(reminder)" class="btn-delete-reminder" type="button"><i class="fa fa-trash"></i></button>
