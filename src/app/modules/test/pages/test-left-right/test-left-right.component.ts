@@ -225,6 +225,12 @@ export class TestLeftRightComponent implements OnInit {
 
     if (this.idAudio< 7) {
 
+      if (this.randomIndex === 1){
+        this.counterRight+=2;
+      }else{
+        this.randomIndex = 0
+      }
+
       if (this.testVariable == 2) {
         this.counterRight+=2;
       }else{
@@ -313,10 +319,7 @@ export class TestLeftRightComponent implements OnInit {
     // Elige la función de reproducción según el número aleatorio
     const randomFunction = this.randomIndex === 0 ? this.playAudioLeft : this.playAudioRight;
 
-    if (this.randomIndex === 1){
-      this.counterRight+=2;
 
-    }
 
     // Ejecuta la función de reproducción
     randomFunction.call(this);

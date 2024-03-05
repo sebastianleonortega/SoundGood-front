@@ -14,7 +14,7 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 export class TestCertificateComponent implements OnInit {
   @ViewChild('certificado') certificadoRef!: ElementRef;
 
-  @Input() nombreUsuario: string = 'Juan Leon';
+  @Input() nombreUsuario: string = 'Diany Garcia';
   constructor(
     @Inject(MAT_DIALOG_DATA) public nameTest: any,
 
