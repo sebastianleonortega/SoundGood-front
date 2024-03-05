@@ -287,7 +287,7 @@ export class TestLeftRightComponent implements OnInit {
   }
 
   scheduleAppointment(){
-    this._router.navigateByUrl('/doctor');
+    this._router.navigateByUrl('/doctor/1');
     this.closeModal();
   }
 
